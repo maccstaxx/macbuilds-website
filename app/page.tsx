@@ -173,7 +173,7 @@ if (p.g > 0.05) {
 
 ctx.shadowBlur = 14; ctx.shadowColor = 'rgba(0,255,70,0.9)'
 
-ctx.fillStyle = rgba(0,${Math.round(200 + p.g * 55)},70,${Math.min(1, baseAlpha + p.g * 0.85)})
+ctx.fillStyle = `rgba(0,${Math.round(200 + p.g * 55)},70,${Math.min(1, baseAlpha + p.g * 0.85)}`
 
 } else {
 
