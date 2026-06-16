@@ -238,7 +238,7 @@ const a = Math.max(0.05, Math.min(0.6, 1 - d / 80))
 
 ctx.beginPath(); ctx.arc(x, y, 0.8 + Math.max(0, 1.5 * (1 - d / 60)), 0, Math.PI * 2)
 
-ctx.fillStyle = rgba(255,255,255,${a}); ctx.fill()
+ctx.fillStyle = `rgba(255,255,255,${a})`; ctx.fill()
 
 }
 
@@ -335,7 +335,7 @@ return (
 
 {['About', 'Projects', 'Resume', 'Contact'].map(l => (
 
-<a key={l} href={#${l.toLowerCase()}} style={{ fontSize: isMobile ? '10px' : '11px', color: '#666', textDecoration: 'none', letterSpacing: '0.1em' }}>{l}</a>
+<a key={l} href={`#${l.toLowerCase()}`} style={{ fontSize: isMobile ? '10px' : '11px', color: '#666', textDecoration: 'none', letterSpacing: '0.1em' }}>{l}</a>
 
 ))}
 
