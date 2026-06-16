@@ -179,7 +179,7 @@ ctx.fillStyle = `rgba(0,${Math.round(200 + p.g * 55)},70,${Math.min(1, baseAlpha
 
 ctx.shadowBlur = p.strand === 0 ? 2 : 4; ctx.shadowColor = 'rgba(0,255,70,0.2)'
 
-ctx.fillStyle = p.strand === 0 ? rgba(0,200,60,${baseAlpha}) : rgba(0,220,70,${baseAlpha})
+ctx.fillStyle = p.strand === 0 ? `rgba(0,200,60,${baseAlpha})` : `rgba(0,220,70,${baseAlpha})`
 
 }
 
