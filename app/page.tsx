@@ -6,6 +6,7 @@ export default function Home() {
   const [loaderGone, setLoaderGone] = useState(false)
   const [stats, setStats] = useState({ repos: 0, latest: '—', followers: 0 })
   const [counted, setCounted] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const cursorDotRef = useRef<HTMLDivElement>(null)
   const statsRef = useRef<HTMLDivElement>(null)
   const progressRef = useRef<HTMLDivElement>(null)
@@ -13,11 +14,19 @@ export default function Home() {
   const projCanvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+    const onResize = () => setIsMobile(window.innerWidth < 768)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
+  useEffect(() => {
     setTimeout(() => setDoorsOpen(true), 1800)
     setTimeout(() => setLoaderGone(true), 3200)
   }, [])
 
   useEffect(() => {
+    if (isMobile) return
     const move = (e: MouseEvent) => {
       if (cursorDotRef.current) {
         cursorDotRef.current.style.left = e.clientX + 'px'
@@ -26,7 +35,7 @@ export default function Home() {
     }
     window.addEventListener('mousemove', move)
     return () => window.removeEventListener('mousemove', move)
-  }, [])
+  }, [isMobile])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,8 +51,14 @@ export default function Home() {
     if (!canvas) return
     const ctx = canvas.getContext('2d')
     if (!ctx) return
-    canvas.width = canvas.offsetWidth
-    canvas.height = canvas.offsetHeight
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
+    }
+    resize()
+    window.addEventListener('resize', resize)
+
     const pts: any[] = []
     const N = 500, TURNS = 6, RADIUS = 90, HEIGHT = 420
     for (let i = 0; i < N; i++) {
@@ -65,16 +80,23 @@ export default function Home() {
         pts.push({ x: Math.cos(angle) * RADIUS * (1 - 2 * f), y, z: Math.sin(angle) * RADIUS * (1 - 2 * f), g: 0, strand: 0 })
       }
     }
+
     let mx = -999, my = -999, t = 0
     const section = canvas.parentElement!
+
     const onMove = (e: MouseEvent) => { const r = section.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top }
+    const onTouch = (e: TouchEvent) => { const r = section.getBoundingClientRect(); mx = e.touches[0].clientX - r.left; my = e.touches[0].clientY - r.top }
     const onLeave = () => { mx = -999; my = -999 }
+
     section.addEventListener('mousemove', onMove)
     section.addEventListener('mouseleave', onLeave)
-    const cx = canvas.width * 0.72
-    const cy = canvas.height * 0.5
+    section.addEventListener('touchmove', onTouch, { passive: true })
+    section.addEventListener('touchend', onLeave)
+
     let animId: number
     const draw = () => {
+      const cx = canvas.width * (canvas.width < 500 ? 0.85 : 0.72)
+      const cy = canvas.height * 0.5
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       t += 0.005
       const projected = pts.map(p => {
@@ -110,7 +132,14 @@ export default function Home() {
       animId = requestAnimationFrame(draw)
     }
     draw()
-    return () => { cancelAnimationFrame(animId); section.removeEventListener('mousemove', onMove); section.removeEventListener('mouseleave', onLeave) }
+    return () => {
+      cancelAnimationFrame(animId)
+      window.removeEventListener('resize', resize)
+      section.removeEventListener('mousemove', onMove)
+      section.removeEventListener('mouseleave', onLeave)
+      section.removeEventListener('touchmove', onTouch)
+      section.removeEventListener('touchend', onLeave)
+    }
   }, [])
 
   useEffect(() => {
@@ -118,14 +147,22 @@ export default function Home() {
     if (!canvas) return
     const ctx = canvas.getContext('2d')
     if (!ctx) return
-    canvas.width = canvas.offsetWidth
-    canvas.height = canvas.offsetHeight
+
+    const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight }
+    resize()
+    window.addEventListener('resize', resize)
+
     let mx = -999, my = -999
     const section = canvas.parentElement!
     const move = (e: MouseEvent) => { const r = section.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top }
+    const touch = (e: TouchEvent) => { const r = section.getBoundingClientRect(); mx = e.touches[0].clientX - r.left; my = e.touches[0].clientY - r.top }
     const leave = () => { mx = -999; my = -999 }
+
     section.addEventListener('mousemove', move)
     section.addEventListener('mouseleave', leave)
+    section.addEventListener('touchmove', touch, { passive: true })
+    section.addEventListener('touchend', leave)
+
     let animId: number
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -142,7 +179,14 @@ export default function Home() {
       animId = requestAnimationFrame(draw)
     }
     draw()
-    return () => { cancelAnimationFrame(animId); section.removeEventListener('mousemove', move); section.removeEventListener('mouseleave', leave) }
+    return () => {
+      cancelAnimationFrame(animId)
+      window.removeEventListener('resize', resize)
+      section.removeEventListener('mousemove', move)
+      section.removeEventListener('mouseleave', leave)
+      section.removeEventListener('touchmove', touch)
+      section.removeEventListener('touchend', leave)
+    }
   }, [])
 
   useEffect(() => {
@@ -170,25 +214,30 @@ export default function Home() {
   const tickerItems = ['MACBUILDS', 'BOSTON, MA', 'BUILDING IN PUBLIC', 'OPEN TO OPPORTUNITIES', 'GITHUB: MACCSTAXX', 'MACBUILDS.AI']
 
   return (
-    <main style={{ background: '#080808', minHeight: '100vh', color: '#fff', fontFamily: 'Space Mono, monospace', cursor: 'none' }}>
-      <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <main style={{ background: '#080808', minHeight: '100vh', color: '#fff', fontFamily: 'Space Mono, monospace', cursor: isMobile ? 'auto' : 'none' }}>
       <div ref={progressRef} style={{ position: 'fixed', top: 0, left: 0, height: '1px', background: '#fff', zIndex: 9999, width: '0%', transition: 'width 0.1s ease' }} />
+
       {!loaderGone && (
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 9997, pointerEvents: 'none' }}>
           <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1 }}>
-            <span style={{ fontSize: '42px', fontWeight: 700, letterSpacing: '-0.03em', color: '#fff', fontFamily: 'Space Mono, monospace' }}>welcome to</span>
+            <span style={{ fontSize: isMobile ? '28px' : '42px', fontWeight: 700, letterSpacing: '-0.03em', color: '#fff', fontFamily: 'Space Mono, monospace' }}>welcome to</span>
           </div>
           <div style={{ position: 'absolute', top: 0, left: 0, width: '50%', height: '100%', background: '#080808', borderRight: '1px solid #222', zIndex: 2, transform: doorsOpen ? 'translateX(-101%)' : 'translateX(0)', transition: 'transform 1.2s cubic-bezier(0.76,0,0.24,1)' }} />
           <div style={{ position: 'absolute', top: 0, right: 0, width: '50%', height: '100%', background: '#080808', borderLeft: '1px solid #222', zIndex: 2, transform: doorsOpen ? 'translateX(101%)' : 'translateX(0)', transition: 'transform 1.2s cubic-bezier(0.76,0,0.24,1)' }} />
         </div>
       )}
-      <div ref={cursorDotRef} style={{ position: 'fixed', width: '5px', height: '5px', background: '#fff', borderRadius: '50%', pointerEvents: 'none', zIndex: 9998, transform: 'translate(-50%,-50%)' }} />
+
+      {!isMobile && (
+        <div ref={cursorDotRef} style={{ position: 'fixed', width: '5px', height: '5px', background: '#fff', borderRadius: '50%', pointerEvents: 'none', zIndex: 9998, transform: 'translate(-50%,-50%)' }} />
+      )}
+
       <div style={{ position: 'relative', zIndex: 1 }}>
-        <nav style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '24px 48px', borderBottom: '1px solid #151515', gap: '36px' }}>
+        <nav style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: isMobile ? '18px 24px' : '24px 48px', borderBottom: '1px solid #151515', gap: isMobile ? '20px' : '36px', flexWrap: 'wrap' }}>
           {['About', 'Projects', 'Resume', 'Contact'].map(l => (
             <a key={l} href={`#${l.toLowerCase()}`} style={{ fontSize: '11px', color: '#666', textDecoration: 'none', letterSpacing: '0.1em' }}>{l}</a>
           ))}
         </nav>
+
         <div style={{ borderBottom: '1px solid #151515', padding: '12px 0', overflow: 'hidden', whiteSpace: 'nowrap' }}>
           <div style={{ display: 'inline-block', animation: 'tick 20s linear infinite' }}>
             {[...tickerItems, ...tickerItems].map((t, i) => (
@@ -196,45 +245,49 @@ export default function Home() {
             ))}
           </div>
         </div>
+
         <div style={{ position: 'relative', overflow: 'hidden', borderBottom: '1px solid #151515' }}>
           <canvas ref={heroCanvasRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }} />
-          <div style={{ position: 'relative', zIndex: 1, padding: '120px 48px 100px' }}>
-            <h1 style={{ fontSize: '72px', fontWeight: 700, letterSpacing: '-0.03em', marginBottom: '40px', lineHeight: 1.0, fontFamily: 'Space Mono, monospace', textShadow: '0 0 40px rgba(0,255,70,0.08), 2px 2px 0 rgba(0,255,70,0.05)' }}>
+          <div style={{ position: 'relative', zIndex: 1, padding: isMobile ? '64px 24px 56px' : '120px 48px 100px' }}>
+            <h1 style={{ fontSize: isMobile ? '48px' : '72px', fontWeight: 700, letterSpacing: '-0.03em', marginBottom: isMobile ? '28px' : '40px', lineHeight: 1.0, fontFamily: 'Space Mono, monospace', textShadow: '0 0 40px rgba(0,255,70,0.08), 2px 2px 0 rgba(0,255,70,0.05)' }}>
               macbuilds
             </h1>
-            <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' }}>
               <a href="#projects" style={{ background: '#fff', color: '#000', padding: '12px 24px', borderRadius: '4px', fontSize: '11px', fontWeight: 700, textDecoration: 'none', letterSpacing: '0.08em' }}>VIEW PROJECTS</a>
               <a href="#about" style={{ fontSize: '11px', color: '#555', textDecoration: 'none', letterSpacing: '0.08em' }}>Learn more →</a>
             </div>
           </div>
         </div>
-        <div ref={statsRef} style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', borderBottom: '1px solid #151515' }}>
+
+        <div ref={statsRef} style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', borderBottom: '1px solid #151515' }}>
           {[{ num: stats.repos, label: 'PROJECTS' }, { num: stats.latest, label: 'LATEST BUILD' }, { num: stats.followers, label: 'GITHUB FOLLOWERS' }].map((s, i) => (
-            <div key={i} style={{ padding: '40px 48px', borderRight: i < 2 ? '1px solid #151515' : 'none', textAlign: 'center' }}>
-              <div style={{ fontSize: '36px', fontWeight: 700, marginBottom: '8px' }}>{s.num}</div>
+            <div key={i} style={{ padding: isMobile ? '28px 24px' : '40px 48px', borderBottom: isMobile ? '1px solid #151515' : 'none', borderRight: !isMobile && i < 2 ? '1px solid #151515' : 'none', textAlign: 'center' }}>
+              <div style={{ fontSize: isMobile ? '28px' : '36px', fontWeight: 700, marginBottom: '8px' }}>{s.num}</div>
               <div style={{ fontSize: '10px', color: '#555', letterSpacing: '0.15em' }}>{s.label}</div>
             </div>
           ))}
         </div>
+
         <div style={{ position: 'relative', overflow: 'hidden' }}>
           <canvas ref={projCanvasRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <div id="projects" style={{ padding: '80px 48px', borderBottom: '1px solid #151515' }}>
+            <div id="projects" style={{ padding: isMobile ? '48px 24px' : '80px 48px', borderBottom: '1px solid #151515' }}>
               <p style={{ fontSize: '10px', color: '#555', letterSpacing: '0.15em', marginBottom: '40px' }}>PROJECTS</p>
-              <div style={{ border: '1px dashed #222', borderRadius: '4px', padding: '48px 32px', textAlign: 'center', color: '#333', fontSize: '11px', letterSpacing: '0.05em' }}>PROJECTS COMING SOON</div>
+              <div style={{ border: '1px dashed #222', borderRadius: '4px', padding: isMobile ? '32px 20px' : '48px 32px', textAlign: 'center', color: '#333', fontSize: '11px', letterSpacing: '0.05em' }}>PROJECTS COMING SOON</div>
             </div>
-            <div id="about" style={{ padding: '80px 48px', borderBottom: '1px solid #151515' }}>
+            <div id="about" style={{ padding: isMobile ? '48px 24px' : '80px 48px', borderBottom: '1px solid #151515' }}>
               <p style={{ fontSize: '10px', color: '#555', letterSpacing: '0.15em', marginBottom: '40px' }}>ABOUT</p>
-              <div style={{ border: '1px dashed #222', borderRadius: '4px', padding: '48px 32px', textAlign: 'center', color: '#333', fontSize: '11px', letterSpacing: '0.05em' }}>BIO COMING SOON</div>
+              <div style={{ border: '1px dashed #222', borderRadius: '4px', padding: isMobile ? '32px 20px' : '48px 32px', textAlign: 'center', color: '#333', fontSize: '11px', letterSpacing: '0.05em' }}>BIO COMING SOON</div>
             </div>
-            <div id="resume" style={{ padding: '80px 48px', borderBottom: '1px solid #151515' }}>
+            <div id="resume" style={{ padding: isMobile ? '48px 24px' : '80px 48px', borderBottom: '1px solid #151515' }}>
               <p style={{ fontSize: '10px', color: '#555', letterSpacing: '0.15em', marginBottom: '40px' }}>RESUME</p>
-              <div style={{ border: '1px dashed #222', borderRadius: '4px', padding: '48px 32px', textAlign: 'center', color: '#333', fontSize: '11px', letterSpacing: '0.05em' }}>EXPERIENCE COMING SOON</div>
+              <div style={{ border: '1px dashed #222', borderRadius: '4px', padding: isMobile ? '32px 20px' : '48px 32px', textAlign: 'center', color: '#333', fontSize: '11px', letterSpacing: '0.05em' }}>EXPERIENCE COMING SOON</div>
             </div>
           </div>
         </div>
-        <div id="contact" style={{ borderTop: '1px solid #151515', padding: '60px 48px 40px', background: '#080808' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '40px', marginBottom: '48px' }}>
+
+        <div id="contact" style={{ borderTop: '1px solid #151515', padding: isMobile ? '48px 24px 32px' : '60px 48px 40px', background: '#080808' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr 1fr', gap: isMobile ? '36px' : '40px', marginBottom: '48px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <p style={{ fontSize: '10px', color: '#555', letterSpacing: '0.15em', marginBottom: '20px' }}>CONTACT</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -253,10 +306,10 @@ export default function Home() {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <p style={{ fontSize: '10px', color: '#555', letterSpacing: '0.15em', marginBottom: '20px' }}>FIND ME</p>
               <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                <a href="https://www.linkedin.com/in/maccal/" target="_blank" style={{ color: '#555' }}>
+                <a href="https://www.linkedin.com/in/maccal/" target="_blank" rel="noreferrer" style={{ color: '#555' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
                 </a>
-                <a href="https://github.com/maccstaxx" target="_blank" style={{ color: '#555' }}>
+                <a href="https://github.com/maccstaxx" target="_blank" rel="noreferrer" style={{ color: '#555' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" /></svg>
                 </a>
               </div>
@@ -267,7 +320,11 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <style>{`@keyframes tick { from { transform: translateX(0) } to { transform: translateX(-50%) } }`}</style>
+
+      <style>{`
+        @keyframes tick { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+        @media (max-width: 767px) { * { -webkit-tap-highlight-color: transparent; } }
+      `}</style>
     </main>
   )
 }
