@@ -7,6 +7,10 @@ export default function Home() {
   const [stats, setStats] = useState({ repos: 0, latest: '—', followers: 0 })
   const [counted, setCounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [aiInput, setAiInput] = useState('')
+  const [aiResult, setAiResult] = useState('')
+  const [aiLoading, setAiLoading] = useState(false)
+  const [aiError, setAiError] = useState('')
   const cursorDotRef = useRef<HTMLDivElement>(null)
   const statsRef = useRef<HTMLDivElement>(null)
   const progressRef = useRef<HTMLDivElement>(null)
@@ -211,6 +215,23 @@ export default function Home() {
     return () => observer.disconnect()
   }, [counted])
 
+  const handleAiSubmit = async () => {
+    if (!aiInput.trim() || aiLoading) return
+    setAiLoading(true)
+    setAiResult('')
+    setAiError('')
+    try {
+      const res = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: aiInput }) })
+      const data = await res.json()
+      if (data.error) setAiError(data.error)
+      else setAiResult(data.reply)
+    } catch {
+      setAiError('Something went wrong. Try again.')
+    } finally {
+      setAiLoading(false)
+    }
+  }
+
   const tickerItems = ['MACBUILDS', 'BOSTON, MA', 'BUILDING IN PUBLIC', 'OPEN TO OPPORTUNITIES', 'GITHUB: MACCSTAXX', 'MACBUILDS.AI']
 
   return (
@@ -233,7 +254,7 @@ export default function Home() {
 
       <div style={{ position: 'relative', zIndex: 1 }}>
         <nav style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: isMobile ? '18px 24px' : '24px 48px', borderBottom: '1px solid #151515', gap: isMobile ? '20px' : '36px', flexWrap: 'wrap' }}>
-          {['About', 'Projects', 'Resume', 'Contact'].map(l => (
+          {['About', 'Projects', 'AI', 'Resume', 'Contact'].map(l => (
             <a key={l} href={`#${l.toLowerCase()}`} style={{ fontSize: '11px', color: '#666', textDecoration: 'none', letterSpacing: '0.1em' }}>{l}</a>
           ))}
         </nav>
@@ -266,6 +287,57 @@ export default function Home() {
               <div style={{ fontSize: '10px', color: '#555', letterSpacing: '0.15em' }}>{s.label}</div>
             </div>
           ))}
+        </div>
+
+        <div id="ai" style={{ padding: isMobile ? '48px 24px' : '80px 48px', borderBottom: '1px solid #151515' }}>
+          <p style={{ fontSize: '10px', color: '#555', letterSpacing: '0.15em', marginBottom: '8px' }}>MACBUILDS.AI</p>
+          <p style={{ fontSize: isMobile ? '22px' : '28px', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: '32px', fontFamily: 'Space Mono, monospace' }}>Got an idea? I'll build you a blueprint.</p>
+          <div style={{ display: 'flex', gap: '12px', flexDirection: isMobile ? 'column' : 'row', marginBottom: '32px' }}>
+            <input
+              value={aiInput}
+              onChange={e => setAiInput(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && handleAiSubmit()}
+              placeholder="Describe your product idea..."
+              style={{ flex: 1, background: '#0f0f0f', border: '1px solid #222', borderRadius: '4px', padding: '14px 16px', color: '#fff', fontFamily: 'Space Mono, monospace', fontSize: '13px', outline: 'none' }}
+            />
+            <button
+              onClick={handleAiSubmit}
+              disabled={aiLoading || !aiInput.trim()}
+              style={{ background: aiLoading ? '#1a1a1a' : '#fff', color: aiLoading ? '#555' : '#000', border: 'none', borderRadius: '4px', padding: '14px 28px', fontFamily: 'Space Mono, monospace', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', cursor: aiLoading ? 'default' : 'pointer', whiteSpace: 'nowrap' }}
+            >
+              {aiLoading ? 'BUILDING...' : 'BUILD BLUEPRINT →'}
+            </button>
+          </div>
+          {aiLoading && (
+            <div style={{ border: '1px solid #1a1a1a', borderRadius: '4px', padding: isMobile ? '28px 20px' : '40px 32px', color: '#444', fontSize: '11px', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <span style={{ display: 'inline-block', animation: 'pulse 1.2s ease-in-out infinite' }}>◆</span>
+              Analyzing your idea and generating blueprint...
+            </div>
+          )}
+          {aiError && (
+            <div style={{ border: '1px solid #3a1a1a', borderRadius: '4px', padding: '20px 24px', color: '#ff4444', fontSize: '11px', letterSpacing: '0.05em' }}>{aiError}</div>
+          )}
+          {aiResult && (
+            <div style={{ border: '1px solid #1a2a1a', borderRadius: '4px', padding: isMobile ? '28px 20px' : '40px 40px', background: '#0a0f0a' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+                <span style={{ fontSize: '10px', color: '#0f0', letterSpacing: '0.15em' }}>BLUEPRINT GENERATED</span>
+                <button onClick={() => { setAiResult(''); setAiInput('') }} style={{ background: 'none', border: 'none', color: '#444', fontSize: '11px', cursor: 'pointer', fontFamily: 'Space Mono, monospace', letterSpacing: '0.05em' }}>CLEAR ×</button>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+                {aiResult.split(/\n(?=\d+\.)/).filter(Boolean).map((section, i) => {
+                  const lines = section.trim().split('\n')
+                  const title = lines[0]
+                  const body = lines.slice(1).join('\n').trim()
+                  return (
+                    <div key={i} style={{ borderLeft: '2px solid #0f0', paddingLeft: '20px' }}>
+                      <p style={{ fontSize: '11px', color: '#0f0', letterSpacing: '0.1em', marginBottom: '10px', fontWeight: 700 }}>{title}</p>
+                      <p style={{ fontSize: '12px', color: '#aaa', lineHeight: 1.7, whiteSpace: 'pre-wrap' }}>{body}</p>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )}
         </div>
 
         <div style={{ position: 'relative', overflow: 'hidden' }}>
@@ -323,6 +395,7 @@ export default function Home() {
 
       <style>{`
         @keyframes tick { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+        @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
         @media (max-width: 767px) { * { -webkit-tap-highlight-color: transparent; } }
       `}</style>
     </main>
