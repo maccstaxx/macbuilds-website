@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Home() {
   const [idea, setIdea] = useState('')
@@ -8,12 +8,235 @@ export default function Home() {
   const [reply, setReply] = useState('')
   const [loading, setLoading] = useState(false)
   const [stats, setStats] = useState({ repos: 0, latest: '—', daysBuilding: 0 })
+  const cursorDotRef = useRef<HTMLDivElement>(null)
+  const progressRef = useRef<HTMLDivElement>(null)
+  const heroCanvasRef = useRef<HTMLCanvasElement>(null)
+  const projCanvasRef = useRef<HTMLCanvasElement>(null)
 
   const getDaysBuilding = () => {
-    const start = new Date('2025-06-01T00:00:00')
+    const start = new Date('2026-06-01T00:00:00')
     const today = new Date()
     return Math.max(1, Math.floor((today.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)))
   }
+
+  useEffect(() => {
+    const move = (e: MouseEvent) => {
+      if (!cursorDotRef.current) return
+      cursorDotRef.current.style.left = `${e.clientX}px`
+      cursorDotRef.current.style.top = `${e.clientY}px`
+    }
+
+    window.addEventListener('mousemove', move)
+    return () => window.removeEventListener('mousemove', move)
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const height = document.documentElement.scrollHeight - window.innerHeight
+      if (!progressRef.current || height <= 0) return
+      progressRef.current.style.width = `${(window.scrollY / height) * 100}%`
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const canvas = heroCanvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    const section = canvas.parentElement
+    if (!section) return
+
+    let width = 0
+    let height = 0
+    let mx = -9999
+    let my = -9999
+    let t = 0
+    let animId = 0
+
+    const pts: { x: number; y: number; z: number; g: number; strand: number }[] = []
+    const pointCount = 500
+    const turns = 6
+    const radius = 90
+    const dnaHeight = 420
+
+    for (let i = 0; i < pointCount; i += 1) {
+      const p = i / pointCount
+      const angle = p * Math.PI * 2 * turns
+      pts.push({ x: Math.cos(angle) * radius, y: (p - 0.5) * dnaHeight, z: Math.sin(angle) * radius, g: 0, strand: 1 })
+    }
+
+    for (let i = 0; i < pointCount; i += 1) {
+      const p = i / pointCount
+      const angle = p * Math.PI * 2 * turns + Math.PI
+      pts.push({ x: Math.cos(angle) * radius, y: (p - 0.5) * dnaHeight, z: Math.sin(angle) * radius, g: 0, strand: 2 })
+    }
+
+    for (let i = 0; i < turns * 8; i += 1) {
+      const p = i / (turns * 8)
+      const angle = p * Math.PI * 2 * turns
+      const y = (p - 0.5) * dnaHeight
+
+      for (let j = 0; j <= 8; j += 1) {
+        const f = j / 8
+        pts.push({ x: Math.cos(angle) * radius * (1 - 2 * f), y, z: Math.sin(angle) * radius * (1 - 2 * f), g: 0, strand: 0 })
+      }
+    }
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect()
+      width = rect.width
+      height = rect.height
+      const ratio = window.devicePixelRatio || 1
+      canvas.width = Math.floor(width * ratio)
+      canvas.height = Math.floor(height * ratio)
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0)
+    }
+
+    const onMove = (e: MouseEvent) => {
+      const rect = section.getBoundingClientRect()
+      mx = e.clientX - rect.left
+      my = e.clientY - rect.top
+    }
+
+    const onTouch = (e: TouchEvent) => {
+      const rect = section.getBoundingClientRect()
+      mx = e.touches[0].clientX - rect.left
+      my = e.touches[0].clientY - rect.top
+    }
+
+    const onLeave = () => {
+      mx = -9999
+      my = -9999
+    }
+
+    const draw = () => {
+      ctx.clearRect(0, 0, width, height)
+      t += 0.005
+
+      const centerX = width > 700 ? width * 0.74 : width * 0.5
+      const centerY = height * 0.52
+
+      const projected = pts.map((p) => {
+        const x1 = p.x * Math.cos(t) - p.z * Math.sin(t)
+        const z1 = p.x * Math.sin(t) + p.z * Math.cos(t)
+        const perspective = 420 / (420 + z1 + radius)
+        const sx = centerX + x1 * perspective
+        const sy = centerY + p.y * perspective
+        const size = Math.max(0.5, (p.strand === 0 ? 2.2 : 3) * perspective)
+        const distance = mx === -9999 ? 9999 : Math.hypot(sx - mx, sy - my)
+        const hover = Math.max(0, 1 - distance / 90)
+        p.g = p.g + (hover - p.g) * 0.12
+        return { sx, sy, size, glow: p.g, z1, depth: (z1 + radius) / (2 * radius), strand: p.strand }
+      })
+
+      projected.sort((a, b) => a.z1 - b.z1)
+
+      projected.forEach((p) => {
+        const baseAlpha = p.strand === 0 ? 0.42 : 0.48 + p.depth * 0.42
+        ctx.beginPath()
+        ctx.shadowBlur = p.glow > 0.05 ? 18 : p.strand === 0 ? 3 : 5
+        ctx.shadowColor = p.glow > 0.05 ? 'rgba(35,255,105,0.9)' : 'rgba(35,255,105,0.22)'
+        ctx.fillStyle = p.strand === 0
+          ? `rgba(70,255,125,${Math.min(1, baseAlpha + p.glow * 0.5)})`
+          : `rgba(0,${Math.round(205 + p.glow * 50)},80,${Math.min(1, baseAlpha + p.glow * 0.85)})`
+        ctx.arc(p.sx, p.sy, p.size + p.glow * 3, 0, Math.PI * 2)
+        ctx.fill()
+        ctx.shadowBlur = 0
+      })
+
+      animId = requestAnimationFrame(draw)
+    }
+
+    resize()
+    draw()
+    window.addEventListener('resize', resize)
+    section.addEventListener('mousemove', onMove)
+    section.addEventListener('touchmove', onTouch)
+    section.addEventListener('mouseleave', onLeave)
+
+    return () => {
+      cancelAnimationFrame(animId)
+      window.removeEventListener('resize', resize)
+      section.removeEventListener('mousemove', onMove)
+      section.removeEventListener('touchmove', onTouch)
+      section.removeEventListener('mouseleave', onLeave)
+    }
+  }, [])
+
+  useEffect(() => {
+    const canvas = projCanvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    const section = canvas.parentElement
+    if (!section) return
+
+    let width = 0
+    let height = 0
+    let mx = -9999
+    let my = -9999
+    let animId = 0
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect()
+      width = rect.width
+      height = rect.height
+      const ratio = window.devicePixelRatio || 1
+      canvas.width = Math.floor(width * ratio)
+      canvas.height = Math.floor(height * ratio)
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0)
+    }
+
+    const move = (e: MouseEvent) => {
+      const rect = section.getBoundingClientRect()
+      mx = e.clientX - rect.left
+      my = e.clientY - rect.top
+    }
+
+    const leave = () => {
+      mx = -9999
+      my = -9999
+    }
+
+    const draw = () => {
+      ctx.clearRect(0, 0, width, height)
+
+      for (let x = 0; x < width; x += 16) {
+        for (let y = 0; y < height; y += 16) {
+          const distance = Math.hypot(x - mx, y - my)
+          const alpha = Math.max(0.04, Math.min(0.55, 1 - distance / 90))
+          const dotSize = 0.7 + Math.max(0, 1.4 * (1 - distance / 70))
+          ctx.beginPath()
+          ctx.arc(x, y, dotSize, 0, Math.PI * 2)
+          ctx.fillStyle = `rgba(80,255,140,${alpha})`
+          ctx.fill()
+        }
+      }
+
+      animId = requestAnimationFrame(draw)
+    }
+
+    resize()
+    draw()
+    window.addEventListener('resize', resize)
+    section.addEventListener('mousemove', move)
+    section.addEventListener('mouseleave', leave)
+
+    return () => {
+      cancelAnimationFrame(animId)
+      window.removeEventListener('resize', resize)
+      section.removeEventListener('mousemove', move)
+      section.removeEventListener('mouseleave', leave)
+    }
+  }, [])
 
   useEffect(() => {
     const days = getDaysBuilding()
@@ -61,46 +284,44 @@ export default function Home() {
   }
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#050805] text-white font-mono">
+    <main className="relative min-h-screen overflow-hidden bg-[#050805] text-white font-mono md:cursor-none">
       <style>{`
         html, body { background: #050805; }
         @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        @keyframes helixFloat { 0%, 100% { transform: translateY(0) rotate(-7deg); } 50% { transform: translateY(-18px) rotate(-7deg); } }
-        @keyframes helixPulse { 0%, 100% { opacity: .25; } 50% { opacity: .9; } }
         .texture-bg {
           background-image:
-            radial-gradient(circle at 20% 10%, rgba(38, 255, 112, 0.13), transparent 28%),
-            radial-gradient(circle at 85% 15%, rgba(12, 160, 84, 0.18), transparent 26%),
-            radial-gradient(circle at 60% 90%, rgba(85, 255, 160, 0.08), transparent 32%),
-            linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+            radial-gradient(circle at 18% 8%, rgba(35,255,105,.14), transparent 28%),
+            radial-gradient(circle at 82% 16%, rgba(0,180,70,.20), transparent 27%),
+            radial-gradient(circle at 50% 95%, rgba(90,255,155,.08), transparent 34%),
+            linear-gradient(rgba(255,255,255,.026) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,.026) 1px, transparent 1px);
           background-size: auto, auto, auto, 42px 42px, 42px 42px;
         }
-        .noise:before {
+        .texture-bg:before {
           content: '';
           position: absolute;
           inset: 0;
           pointer-events: none;
           opacity: .22;
           background-image:
-            radial-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
-            radial-gradient(rgba(38,255,112,.16) 1px, transparent 1px);
+            radial-gradient(rgba(255,255,255,.13) 1px, transparent 1px),
+            radial-gradient(rgba(38,255,112,.18) 1px, transparent 1px);
           background-size: 7px 7px, 19px 19px;
           mix-blend-mode: overlay;
         }
-        .scanlines:after {
+        .texture-bg:after {
           content: '';
           position: absolute;
           inset: 0;
           pointer-events: none;
-          background: repeating-linear-gradient(to bottom, rgba(255,255,255,.025), rgba(255,255,255,.025) 1px, transparent 1px, transparent 5px);
-          opacity: .32;
+          background: repeating-linear-gradient(to bottom, rgba(255,255,255,.026), rgba(255,255,255,.026) 1px, transparent 1px, transparent 5px);
+          opacity: .3;
         }
       `}</style>
 
-      <div className="texture-bg noise scanlines pointer-events-none fixed inset-0" />
-      <div className="pointer-events-none fixed left-0 top-0 h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl" />
-      <div className="pointer-events-none fixed bottom-0 right-0 h-96 w-96 rounded-full bg-lime-500/10 blur-3xl" />
+      <div className="texture-bg pointer-events-none fixed inset-0" />
+      <div ref={progressRef} className="fixed left-0 top-0 z-[9999] h-px w-0 bg-emerald-200 transition-[width] duration-100" />
+      <div ref={cursorDotRef} className="pointer-events-none fixed z-[9998] hidden h-[5px] w-[5px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-200 shadow-[0_0_18px_rgba(52,211,153,.8)] md:block" />
 
       <nav className="relative z-10 flex justify-center gap-8 border-b border-emerald-500/10 bg-black/30 px-6 py-5 text-[11px] tracking-[0.18em] text-zinc-500 backdrop-blur">
         <a href="#about">ABOUT</a>
@@ -111,16 +332,17 @@ export default function Home() {
 
       <section className="relative z-10 overflow-hidden border-b border-emerald-500/10 bg-black/20 py-3 whitespace-nowrap">
         <div className="inline-block animate-[tick_24s_linear_infinite]">
-          {Array.from({ length: 4 }).flatMap(() => ['MACBUILDS.AI', 'EST. 2025', 'LEARNING OUT LOUD', 'POWERED BY AI', 'ALWAYS BUILDING', 'WORK WITH ME']).map((item, i) => (
+          {Array.from({ length: 4 }).flatMap(() => ['MACBUILDS.AI', 'EST. 2026', 'LEARNING OUT LOUD', 'POWERED BY AI', 'ALWAYS BUILDING', 'WORK WITH ME']).map((item, i) => (
             <span key={`${item}-${i}`} className="mr-12 text-[10px] tracking-[0.18em] text-emerald-900/80">{item}</span>
           ))}
         </div>
       </section>
 
-      <section className="relative z-10 grid items-center gap-10 border-b border-emerald-500/10 px-6 py-20 md:grid-cols-[1.1fr_.9fr] md:px-12 md:py-32">
-        <div>
+      <section className="relative z-10 min-h-[560px] overflow-hidden border-b border-emerald-500/10">
+        <canvas ref={heroCanvasRef} className="absolute inset-0 h-full w-full" />
+        <div className="relative z-10 px-6 py-20 md:px-12 md:py-32">
           <p className="mb-4 text-[10px] tracking-[0.18em] text-emerald-500/70">WELCOME TO</p>
-          <h1 className="mb-6 text-5xl font-bold tracking-[-0.06em] md:text-7xl">macbuilds</h1>
+          <h1 className="mb-6 text-5xl font-bold leading-none tracking-[-0.06em] md:text-7xl">macbuilds</h1>
           <p className="mb-8 max-w-2xl text-sm leading-7 text-zinc-400">
             I’m learning out loud and building AI-powered tools, agents, and product experiments.
           </p>
@@ -128,11 +350,6 @@ export default function Home() {
             <a href="#projects" className="rounded bg-emerald-300 px-6 py-3 text-[11px] font-bold tracking-[0.12em] text-black shadow-[0_0_30px_rgba(52,211,153,.18)]">VIEW PROJECTS</a>
             <a href="#about" className="px-2 py-3 text-[11px] tracking-[0.12em] text-zinc-500">LEARN MORE →</a>
           </div>
-        </div>
-
-        <div className="relative hidden min-h-[420px] items-center justify-center md:flex">
-          <div className="absolute inset-8 rounded-full border border-emerald-500/10 bg-emerald-500/[0.03] blur-sm" />
-          <DnaHelix />
         </div>
       </section>
 
@@ -149,42 +366,45 @@ export default function Home() {
         ))}
       </section>
 
-      <section id="projects" className="relative z-10 border-b border-emerald-500/10 px-6 py-16 md:px-12 md:py-24">
-        <p className="mb-10 text-[10px] tracking-[0.18em] text-emerald-500/70">PROJECTS</p>
+      <section className="relative z-10 overflow-hidden border-b border-emerald-500/10">
+        <canvas ref={projCanvasRef} className="absolute inset-0 h-full w-full opacity-70" />
+        <div id="projects" className="relative z-10 px-6 py-16 md:px-12 md:py-24">
+          <p className="mb-10 text-[10px] tracking-[0.18em] text-emerald-500/70">PROJECTS</p>
 
-        <div className="rounded-md border border-emerald-500/15 bg-black/50 p-6 shadow-[0_0_80px_rgba(16,185,129,.08)] backdrop-blur md:p-10">
-          <p className="mb-4 text-[10px] tracking-[0.18em] text-emerald-500/70">BUILD WITH MAC</p>
-          <h2 className="mb-4 text-2xl font-bold leading-tight tracking-[-0.05em] md:text-3xl">PROJECT 001 — AI BUILD BLUEPRINT</h2>
-          <p className="mb-6 max-w-2xl text-sm leading-7 text-zinc-400">Describe an idea. I’ll turn it into a product plan.</p>
+          <div className="rounded-md border border-emerald-500/15 bg-black/55 p-6 shadow-[0_0_80px_rgba(16,185,129,.08)] backdrop-blur md:p-10">
+            <p className="mb-4 text-[10px] tracking-[0.18em] text-emerald-500/70">BUILD WITH MAC</p>
+            <h2 className="mb-4 text-2xl font-bold leading-tight tracking-[-0.05em] md:text-3xl">PROJECT 001 — AI BUILD BLUEPRINT</h2>
+            <p className="mb-6 max-w-2xl text-sm leading-7 text-zinc-400">Describe an idea. I’ll turn it into a product plan.</p>
 
-          <input
-            value={botPassword}
-            onChange={(e) => setBotPassword(e.target.value)}
-            type="password"
-            placeholder="Enter bot password"
-            className="mb-4 w-full rounded border border-emerald-500/15 bg-[#050805] p-4 text-sm text-white outline-none placeholder:text-zinc-700 focus:border-emerald-400/50"
-          />
+            <input
+              value={botPassword}
+              onChange={(e) => setBotPassword(e.target.value)}
+              type="password"
+              placeholder="Enter bot password"
+              className="mb-4 w-full rounded border border-emerald-500/15 bg-[#050805] p-4 text-sm text-white outline-none placeholder:text-zinc-700 focus:border-emerald-400/50"
+            />
 
-          <textarea
-            value={idea}
-            onChange={(e) => setIdea(e.target.value)}
-            placeholder="Example: I want to build an AI assistant for real estate agents."
-            className="mb-4 min-h-[140px] w-full resize-y rounded border border-emerald-500/15 bg-[#050805] p-4 text-sm text-white outline-none placeholder:text-zinc-700 focus:border-emerald-400/50"
-          />
+            <textarea
+              value={idea}
+              onChange={(e) => setIdea(e.target.value)}
+              placeholder="Example: I want to build an AI assistant for real estate agents."
+              className="mb-4 min-h-[140px] w-full resize-y rounded border border-emerald-500/15 bg-[#050805] p-4 text-sm text-white outline-none placeholder:text-zinc-700 focus:border-emerald-400/50"
+            />
 
-          <button
-            onClick={askAI}
-            disabled={loading}
-            className="rounded bg-emerald-300 px-5 py-3 text-[11px] font-bold tracking-[0.12em] text-black shadow-[0_0_30px_rgba(52,211,153,.18)] disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {loading ? 'BUILDING...' : 'GENERATE BLUEPRINT'}
-          </button>
+            <button
+              onClick={askAI}
+              disabled={loading}
+              className="rounded bg-emerald-300 px-5 py-3 text-[11px] font-bold tracking-[0.12em] text-black shadow-[0_0_30px_rgba(52,211,153,.18)] disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {loading ? 'BUILDING...' : 'GENERATE BLUEPRINT'}
+            </button>
 
-          {reply && (
-            <div className="mt-8 whitespace-pre-wrap rounded border border-emerald-500/15 bg-black/60 p-6 text-sm leading-7 text-zinc-300">
-              {reply}
-            </div>
-          )}
+            {reply && (
+              <div className="mt-8 whitespace-pre-wrap rounded border border-emerald-500/15 bg-black/60 p-6 text-sm leading-7 text-zinc-300">
+                {reply}
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
@@ -213,30 +433,6 @@ export default function Home() {
         <div className="mt-10 border-t border-emerald-500/10 pt-6 text-center text-[11px] text-zinc-800">© 2026 macbuilds</div>
       </footer>
     </main>
-  )
-}
-
-function DnaHelix() {
-  const rungs = Array.from({ length: 18 })
-
-  return (
-    <svg className="relative z-10 h-[430px] w-[320px] animate-[helixFloat_6s_ease-in-out_infinite] drop-shadow-[0_0_28px_rgba(52,211,153,.35)]" viewBox="0 0 320 430" fill="none" aria-hidden="true">
-      <path d="M105 25C245 95 245 155 105 215C-35 275 -35 335 105 405" stroke="rgba(52,211,153,.95)" strokeWidth="3" />
-      <path d="M215 25C75 95 75 155 215 215C355 275 355 335 215 405" stroke="rgba(134,239,172,.75)" strokeWidth="3" />
-      {rungs.map((_, i) => {
-        const y = 35 + i * 22
-        const wave = Math.sin(i * 0.9)
-        const x1 = 105 + wave * 38
-        const x2 = 215 - wave * 38
-        return (
-          <g key={i} style={{ animation: `helixPulse ${2.6 + (i % 4) * 0.25}s ease-in-out infinite` }}>
-            <line x1={x1} y1={y} x2={x2} y2={y} stroke="rgba(74,222,128,.65)" strokeWidth="2" />
-            <circle cx={x1} cy={y} r="4" fill="rgba(52,211,153,.95)" />
-            <circle cx={x2} cy={y} r="4" fill="rgba(190,242,100,.85)" />
-          </g>
-        )
-      })}
-    </svg>
   )
 }
 
