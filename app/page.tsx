@@ -553,8 +553,6 @@ return (
 
 </div>
 
-<style>{@keyframes tick { from { transform: translateX(0) } to { transform: translateX(-50%) } }}</style>
-
 </main>
 
 )
