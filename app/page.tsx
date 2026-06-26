@@ -10,7 +10,7 @@ export default function Home() {
   const [stats, setStats] = useState({ repos: 0, latest: '—', daysBuilding: 0 })
 
   const getDaysBuilding = () => {
-    const start = new Date('2026-01-01')
+    const start = new Date('2025-06-01T00:00:00')
     const today = new Date()
     return Math.max(1, Math.floor((today.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)))
   }
@@ -61,120 +61,186 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-[#080808] text-white font-mono">
+    <main className="relative min-h-screen overflow-hidden bg-[#050805] text-white font-mono">
       <style>{`
-        html, body { background: #080808; }
+        html, body { background: #050805; }
         @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes helixFloat { 0%, 100% { transform: translateY(0) rotate(-7deg); } 50% { transform: translateY(-18px) rotate(-7deg); } }
+        @keyframes helixPulse { 0%, 100% { opacity: .25; } 50% { opacity: .9; } }
+        .texture-bg {
+          background-image:
+            radial-gradient(circle at 20% 10%, rgba(38, 255, 112, 0.13), transparent 28%),
+            radial-gradient(circle at 85% 15%, rgba(12, 160, 84, 0.18), transparent 26%),
+            radial-gradient(circle at 60% 90%, rgba(85, 255, 160, 0.08), transparent 32%),
+            linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+          background-size: auto, auto, auto, 42px 42px, 42px 42px;
+        }
+        .noise:before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          opacity: .22;
+          background-image:
+            radial-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+            radial-gradient(rgba(38,255,112,.16) 1px, transparent 1px);
+          background-size: 7px 7px, 19px 19px;
+          mix-blend-mode: overlay;
+        }
+        .scanlines:after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background: repeating-linear-gradient(to bottom, rgba(255,255,255,.025), rgba(255,255,255,.025) 1px, transparent 1px, transparent 5px);
+          opacity: .32;
+        }
       `}</style>
 
-      <nav className="flex justify-center gap-8 border-b border-[#151515] px-6 py-5 text-[11px] tracking-[0.18em] text-zinc-500">
+      <div className="texture-bg noise scanlines pointer-events-none fixed inset-0" />
+      <div className="pointer-events-none fixed left-0 top-0 h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl" />
+      <div className="pointer-events-none fixed bottom-0 right-0 h-96 w-96 rounded-full bg-lime-500/10 blur-3xl" />
+
+      <nav className="relative z-10 flex justify-center gap-8 border-b border-emerald-500/10 bg-black/30 px-6 py-5 text-[11px] tracking-[0.18em] text-zinc-500 backdrop-blur">
         <a href="#about">ABOUT</a>
         <a href="#projects">PROJECTS</a>
         <a href="#resume">RESUME</a>
         <a href="#contact">CONTACT</a>
       </nav>
 
-      <section className="overflow-hidden border-b border-[#151515] py-3 whitespace-nowrap">
+      <section className="relative z-10 overflow-hidden border-b border-emerald-500/10 bg-black/20 py-3 whitespace-nowrap">
         <div className="inline-block animate-[tick_24s_linear_infinite]">
-          {Array.from({ length: 4 }).flatMap(() => ['MACBUILDS.AI', 'EST. 2026', 'LEARNING OUT LOUD', 'POWERED BY AI', 'ALWAYS LEARNING', 'WORK WITH ME']).map((item, i) => (
-            <span key={`${item}-${i}`} className="mr-12 text-[10px] tracking-[0.18em] text-zinc-800">{item}</span>
+          {Array.from({ length: 4 }).flatMap(() => ['MACBUILDS.AI', 'EST. 2025', 'LEARNING OUT LOUD', 'POWERED BY AI', 'ALWAYS BUILDING', 'WORK WITH ME']).map((item, i) => (
+            <span key={`${item}-${i}`} className="mr-12 text-[10px] tracking-[0.18em] text-emerald-900/80">{item}</span>
           ))}
         </div>
       </section>
 
-      <section className="border-b border-[#151515] px-6 py-20 md:px-12 md:py-32">
-        <p className="mb-4 text-[10px] tracking-[0.18em] text-zinc-600">WELCOME TO</p>
-        <h1 className="mb-6 text-5xl font-bold tracking-[-0.06em] md:text-7xl">macbuilds</h1>
-        <p className="mb-8 max-w-2xl text-sm leading-7 text-zinc-500">
-          I’m learning out loud and building AI-powered tools, agents, and product experiments.
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <a href="#projects" className="rounded bg-white px-6 py-3 text-[11px] font-bold tracking-[0.12em] text-black">VIEW PROJECTS</a>
-          <a href="#about" className="px-2 py-3 text-[11px] tracking-[0.12em] text-zinc-500">LEARN MORE →</a>
+      <section className="relative z-10 grid items-center gap-10 border-b border-emerald-500/10 px-6 py-20 md:grid-cols-[1.1fr_.9fr] md:px-12 md:py-32">
+        <div>
+          <p className="mb-4 text-[10px] tracking-[0.18em] text-emerald-500/70">WELCOME TO</p>
+          <h1 className="mb-6 text-5xl font-bold tracking-[-0.06em] md:text-7xl">macbuilds</h1>
+          <p className="mb-8 max-w-2xl text-sm leading-7 text-zinc-400">
+            I’m learning out loud and building AI-powered tools, agents, and product experiments.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <a href="#projects" className="rounded bg-emerald-300 px-6 py-3 text-[11px] font-bold tracking-[0.12em] text-black shadow-[0_0_30px_rgba(52,211,153,.18)]">VIEW PROJECTS</a>
+            <a href="#about" className="px-2 py-3 text-[11px] tracking-[0.12em] text-zinc-500">LEARN MORE →</a>
+          </div>
+        </div>
+
+        <div className="relative hidden min-h-[420px] items-center justify-center md:flex">
+          <div className="absolute inset-8 rounded-full border border-emerald-500/10 bg-emerald-500/[0.03] blur-sm" />
+          <DnaHelix />
         </div>
       </section>
 
-      <section className="grid border-b border-[#151515] md:grid-cols-3">
+      <section className="relative z-10 grid border-b border-emerald-500/10 bg-black/20 md:grid-cols-3">
         {[
           { label: 'PROJECTS', value: stats.repos },
           { label: 'LATEST BUILD', value: stats.latest },
           { label: 'DAYS BUILDING', value: stats.daysBuilding },
         ].map((stat, i) => (
-          <div key={stat.label} className={`flex items-center justify-between border-[#151515] px-6 py-5 md:block md:px-12 md:py-10 md:text-center ${i < 2 ? 'md:border-r' : ''}`}>
-            <div className="text-2xl font-bold md:mb-2 md:text-4xl">{stat.value}</div>
-            <div className="text-[10px] tracking-[0.18em] text-zinc-600">{stat.label}</div>
+          <div key={stat.label} className={`flex items-center justify-between border-emerald-500/10 px-6 py-5 md:block md:px-12 md:py-10 md:text-center ${i < 2 ? 'md:border-r' : ''}`}>
+            <div className="text-2xl font-bold text-emerald-100 md:mb-2 md:text-4xl">{stat.value}</div>
+            <div className="text-[10px] tracking-[0.18em] text-emerald-700/70">{stat.label}</div>
           </div>
         ))}
       </section>
 
-      <section id="projects" className="border-b border-[#151515] px-6 py-16 md:px-12 md:py-24">
-        <p className="mb-10 text-[10px] tracking-[0.18em] text-zinc-600">PROJECTS</p>
+      <section id="projects" className="relative z-10 border-b border-emerald-500/10 px-6 py-16 md:px-12 md:py-24">
+        <p className="mb-10 text-[10px] tracking-[0.18em] text-emerald-500/70">PROJECTS</p>
 
-        <div className="rounded-md border border-[#222] bg-white/[0.02] p-6 md:p-10">
-          <p className="mb-4 text-[10px] tracking-[0.18em] text-zinc-600">BUILD WITH MAC</p>
+        <div className="rounded-md border border-emerald-500/15 bg-black/50 p-6 shadow-[0_0_80px_rgba(16,185,129,.08)] backdrop-blur md:p-10">
+          <p className="mb-4 text-[10px] tracking-[0.18em] text-emerald-500/70">BUILD WITH MAC</p>
           <h2 className="mb-4 text-2xl font-bold leading-tight tracking-[-0.05em] md:text-3xl">PROJECT 001 — AI BUILD BLUEPRINT</h2>
-          <p className="mb-6 max-w-2xl text-sm leading-7 text-zinc-500">Describe an idea. I’ll turn it into a product plan.</p>
+          <p className="mb-6 max-w-2xl text-sm leading-7 text-zinc-400">Describe an idea. I’ll turn it into a product plan.</p>
 
           <input
             value={botPassword}
             onChange={(e) => setBotPassword(e.target.value)}
             type="password"
             placeholder="Enter bot password"
-            className="mb-4 w-full rounded border border-[#222] bg-[#050505] p-4 text-sm text-white outline-none placeholder:text-zinc-700"
+            className="mb-4 w-full rounded border border-emerald-500/15 bg-[#050805] p-4 text-sm text-white outline-none placeholder:text-zinc-700 focus:border-emerald-400/50"
           />
 
           <textarea
             value={idea}
             onChange={(e) => setIdea(e.target.value)}
             placeholder="Example: I want to build an AI assistant for real estate agents."
-            className="mb-4 min-h-[140px] w-full resize-y rounded border border-[#222] bg-[#050505] p-4 text-sm text-white outline-none placeholder:text-zinc-700"
+            className="mb-4 min-h-[140px] w-full resize-y rounded border border-emerald-500/15 bg-[#050805] p-4 text-sm text-white outline-none placeholder:text-zinc-700 focus:border-emerald-400/50"
           />
 
           <button
             onClick={askAI}
             disabled={loading}
-            className="rounded bg-white px-5 py-3 text-[11px] font-bold tracking-[0.12em] text-black disabled:cursor-not-allowed disabled:opacity-60"
+            className="rounded bg-emerald-300 px-5 py-3 text-[11px] font-bold tracking-[0.12em] text-black shadow-[0_0_30px_rgba(52,211,153,.18)] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {loading ? 'BUILDING...' : 'GENERATE BLUEPRINT'}
           </button>
 
           {reply && (
-            <div className="mt-8 whitespace-pre-wrap rounded border border-[#1f1f1f] bg-[#0b0b0b] p-6 text-sm leading-7 text-zinc-300">
+            <div className="mt-8 whitespace-pre-wrap rounded border border-emerald-500/15 bg-black/60 p-6 text-sm leading-7 text-zinc-300">
               {reply}
             </div>
           )}
         </div>
       </section>
 
-      <section id="about" className="border-b border-[#151515] px-6 py-16 md:px-12 md:py-24">
-        <p className="mb-10 text-[10px] tracking-[0.18em] text-zinc-600">ABOUT</p>
-        <div className="rounded border border-dashed border-[#222] p-10 text-center text-[11px] tracking-[0.12em] text-zinc-700">BIO COMING SOON</div>
+      <section id="about" className="relative z-10 border-b border-emerald-500/10 px-6 py-16 md:px-12 md:py-24">
+        <p className="mb-10 text-[10px] tracking-[0.18em] text-emerald-500/70">ABOUT</p>
+        <div className="rounded border border-dashed border-emerald-500/15 bg-black/30 p-10 text-center text-[11px] tracking-[0.12em] text-zinc-700 backdrop-blur">BIO COMING SOON</div>
       </section>
 
-      <section id="resume" className="border-b border-[#151515] px-6 py-16 md:px-12 md:py-24">
-        <p className="mb-10 text-[10px] tracking-[0.18em] text-zinc-600">RESUME</p>
-        <div className="rounded border border-dashed border-[#222] p-10 text-center text-[11px] tracking-[0.12em] text-zinc-700">EXPERIENCE COMING SOON</div>
+      <section id="resume" className="relative z-10 border-b border-emerald-500/10 px-6 py-16 md:px-12 md:py-24">
+        <p className="mb-10 text-[10px] tracking-[0.18em] text-emerald-500/70">RESUME</p>
+        <div className="rounded border border-dashed border-emerald-500/15 bg-black/30 p-10 text-center text-[11px] tracking-[0.12em] text-zinc-700 backdrop-blur">EXPERIENCE COMING SOON</div>
       </section>
 
-      <footer id="contact" className="px-6 py-12 md:px-12">
+      <footer id="contact" className="relative z-10 bg-black/20 px-6 py-12 md:px-12">
         <div className="grid gap-8 md:grid-cols-3 md:text-center">
           <FooterColumn title="CONTACT" links={[{ label: 'Reach out', href: '#contact' }]} />
           <FooterColumn title="NAVIGATE" links={[{ label: 'Home', href: '#' }, { label: 'About', href: '#about' }, { label: 'Projects', href: '#projects' }, { label: 'Resume', href: '#resume' }]} />
           <FooterColumn title="FIND ME" links={[{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/maccal/' }, { label: 'GitHub', href: 'https://github.com/maccstaxx' }]} />
         </div>
-        <div className="mt-10 border-t border-[#151515] pt-6 text-center text-[11px] text-zinc-800">© 2026 macbuilds</div>
+        <div className="mt-10 border-t border-emerald-500/10 pt-6 text-center text-[11px] text-zinc-800">© 2026 macbuilds</div>
       </footer>
     </main>
+  )
+}
+
+function DnaHelix() {
+  const rungs = Array.from({ length: 18 })
+
+  return (
+    <svg className="relative z-10 h-[430px] w-[320px] animate-[helixFloat_6s_ease-in-out_infinite] drop-shadow-[0_0_28px_rgba(52,211,153,.35)]" viewBox="0 0 320 430" fill="none" aria-hidden="true">
+      <path d="M105 25C245 95 245 155 105 215C-35 275 -35 335 105 405" stroke="rgba(52,211,153,.95)" strokeWidth="3" />
+      <path d="M215 25C75 95 75 155 215 215C355 275 355 335 215 405" stroke="rgba(134,239,172,.75)" strokeWidth="3" />
+      {rungs.map((_, i) => {
+        const y = 35 + i * 22
+        const wave = Math.sin(i * 0.9)
+        const x1 = 105 + wave * 38
+        const x2 = 215 - wave * 38
+        return (
+          <g key={i} style={{ animation: `helixPulse ${2.6 + (i % 4) * 0.25}s ease-in-out infinite` }}>
+            <line x1={x1} y1={y} x2={x2} y2={y} stroke="rgba(74,222,128,.65)" strokeWidth="2" />
+            <circle cx={x1} cy={y} r="4" fill="rgba(52,211,153,.95)" />
+            <circle cx={x2} cy={y} r="4" fill="rgba(190,242,100,.85)" />
+          </g>
+        )
+      })}
+    </svg>
   )
 }
 
 function FooterColumn({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (
     <div>
-      <p className="mb-4 text-[10px] tracking-[0.18em] text-zinc-600">{title}</p>
+      <p className="mb-4 text-[10px] tracking-[0.18em] text-emerald-500/70">{title}</p>
       <div className="flex flex-col gap-2">
         {links.map((link) => (
-          <a key={link.href} href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noreferrer' : undefined} className="text-sm text-zinc-500 no-underline">
+          <a key={link.href} href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noreferrer' : undefined} className="text-sm text-zinc-500 no-underline hover:text-emerald-300">
             {link.label}
           </a>
         ))}
