@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [idea, setIdea] = useState('')
+  const [botPassword, setBotPassword] = useState('')
   const [reply, setReply] = useState('')
   const [loading, setLoading] = useState(false)
   const [stats, setStats] = useState({ repos: 0, latest: '—', daysBuilding: 0 })
@@ -35,6 +36,11 @@ export default function Home() {
 
   const askAI = async () => {
     if (!idea.trim()) return
+    if (!botPassword.trim()) {
+      setReply('Enter the bot password first.')
+      return
+    }
+
     setLoading(true)
     setReply('')
 
@@ -42,7 +48,7 @@ export default function Home() {
       const res = await fetch('/api/build-blueprint', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: idea }),
+        body: JSON.stringify({ message: idea, password: botPassword }),
       })
 
       const data = await res.json()
@@ -108,6 +114,14 @@ export default function Home() {
           <p className="mb-4 text-[10px] tracking-[0.18em] text-zinc-600">BUILD WITH MAC</p>
           <h2 className="mb-4 text-2xl font-bold leading-tight tracking-[-0.05em] md:text-3xl">PROJECT 001 — AI BUILD BLUEPRINT</h2>
           <p className="mb-6 max-w-2xl text-sm leading-7 text-zinc-500">Describe an idea. I’ll turn it into a product plan.</p>
+
+          <input
+            value={botPassword}
+            onChange={(e) => setBotPassword(e.target.value)}
+            type="password"
+            placeholder="Enter bot password"
+            className="mb-4 w-full rounded border border-[#222] bg-[#050505] p-4 text-sm text-white outline-none placeholder:text-zinc-700"
+          />
 
           <textarea
             value={idea}
