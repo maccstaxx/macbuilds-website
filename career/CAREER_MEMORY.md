@@ -14,10 +14,13 @@
 
 ## 0. CURRENT FOCUS  ⟵ start here each session
 
-- [ ] **Fill in Section 2 (Mac's Profile)** — the whole plan is blocked until we
-      have Mac's real baseline. Next session: interview Mac and complete it.
-- [ ] Then: run the Gap Analysis (Section 5) against the real baseline.
-- [ ] Then: pick the first portfolio build (Section 6).
+- [ ] **Confirm Section 2 (Mac's Profile)** — populated from inference; verify the
+      details marked ⚠ (current title/level, Delinea, tools, timeline, comp).
+- [ ] **Ship Portfolio Build #1** — pick from Section 6; copy the Cody blueprint
+      (Section 3.5). This is the single highest-leverage action.
+- [ ] Lock the Gap Analysis (Section 5) once Section 2 is confirmed.
+- [ ] **Networking:** reconnect with Cody Goodin (2nd-degree, ex-Delinea colleague,
+      just landed this exact role) — pick his brain on the path. See Section 8.
 
 ---
 
@@ -112,31 +115,48 @@ Ranked by how much they weigh it, based on the JD language:
 
 ---
 
-## 2. MAC'S PROFILE  ⟵ TODO: fill this in first
+## 2. MAC'S PROFILE
 
-*Claude: interview Mac to complete this. Do not proceed to gap analysis until done.*
+*Populated from what Mac has shared (LinkedIn/thread context). Items marked ⚠ are
+inferred and need Mac's confirmation.*
 
-- **Current role / title:** _TODO_
-- **Years of experience & domains:** _TODO_
-- **RevOps / Sales Ops / SE / GTM-eng exposure:** _TODO (how much, what exactly)_
-- **Quota-bearing or rep-adjacent experience:** _TODO_
-- **Tools used hands-on (and depth):**
-  - CRM (HubSpot / Salesforce): _TODO_
-  - Clay: _TODO_
-  - SQL: _TODO_
-  - Outreach / sequencing: _TODO_
-  - Gong / Apollo / ZoomInfo: _TODO_
-  - LLM / prompt workflows built: _TODO_
-  - Scripting/APIs (Python, JS, Zapier/Make, webhooks): _TODO_
-- **Strongest 2–3 skills:** _TODO_
-- **Biggest gaps vs. this JD (self-assessed):** _TODO_
-- **Systems Mac has built (with outcomes/metrics):** _TODO_
-- **Education / certs:** _TODO_
-- **Location / work authorization / remote:** _TODO (JD is US remote)_
-- **Timeline to apply:** _TODO_
-- **Comp expectations / current comp:** _TODO_
-- **Existing portfolio / LinkedIn / GitHub / personal site:** _TODO_
-- **Warm connections to Nooks or its network (KP portfolio, customers):** _TODO_
+- **Name / pronouns:** Macario ("Mac") Calvo-Johnson · He/Him
+- **Current role:** ⚠ Sales at **Datadog** (likely SDR/BDR or AE — confirm level).
+  Living in prospecting: cadences, sequences, follow-up email craft. Eastern Time.
+- **Prior:** ⚠ **Confluent** (sales — had a "final follow-up email" that performed
+  well; peers still ask for his cadences). ⚠ Possibly **Delinea** (LinkedIn shows
+  Mac & Cody "both worked at Delinea, Feb 2024" — confirm role/dates).
+- **Domain:** Enterprise SaaS sales (Datadog, Confluent = strong SDR→AE programs).
+- **Quota-bearing / rep intuition:** **STRONG — this is Mac's edge.** The JD asks
+  for "quota-bearing role or alongside reps closely enough to understand where they
+  lose time." Mac lives this daily. This is the hardest thing to fake and Mac has it.
+- **AI interest:** Actively exploring AI/prompts (trading prompt libraries with
+  peers; the reason for building toward a GTM-eng role).
+- **Tools used hands-on (⚠ confirm depth):**
+  - CRM: ⚠ Salesforce (standard at Datadog/Confluent) — as a *user*, not builder
+  - Sequencing: ⚠ Outreach / Salesloft (likely strong — this is his daily driver)
+  - Clay: ⚠ unknown — likely a gap
+  - SQL: ⚠ unknown — likely a gap
+  - LLM/prompt workflows built: ⚠ early/experimental
+  - Automation builders (n8n/Make/Zapier), APIs/scripting: ⚠ likely a gap
+- **Strongest skills (vs JD):** sales intuition, sequencing/outreach craft,
+  communication/persuasion, rep empathy.
+- **Biggest gaps (vs JD):** the *engineer* half — Clay, building automations with
+  QA, SQL/analytics, dashboards, APIs/integrations. (Mirror image of Cody, §3.5.)
+- **Systems built w/ outcomes:** ⚠ TODO — capture any process/cadence wins with
+  metrics (reply rates, meetings booked, pipeline $).
+- **Education / certs:** ⚠ TODO.
+- **Location / auth / remote:** US, Eastern Time; JD is US-remote (any TZ) — fits.
+- **Timeline to apply:** ⚠ TODO.
+- **Comp:** ⚠ TODO (target role posts $160–180K base + equity + commission).
+- **Assets:** personal site repo `macbuilds-website` (this repo) — use as portfolio;
+  ⚠ GitHub handle / LinkedIn URL TODO.
+- **Warm connections:** **Cody Goodin** (2nd-degree, 30+ mutuals, ex-Delinea, now a
+  GTM Engineer) — path exemplar + potential referral/intel. KP-portfolio & Nooks-
+  customer network (Notion/HubSpot/Cursor/Rippling) — ⚠ map 2nd-degree intros.
+
+> **Privacy note:** Mac is currently employed while exploring. If this repo is or
+> becomes public, keep employer job-search specifics out of committed files.
 
 ---
 
@@ -156,6 +176,66 @@ Ranked by how much they weigh it, based on the JD language:
   Interview angle: show you'd be a sharp, opinionated user of their platform.
 - **Culture signals from the JD:** high ownership, speed ("selling at the speed
   of the market"), bias to structure ambiguity, science-over-art framing.
+
+---
+
+## 3.5. BLUEPRINT — Cody Goodin's path into GTM Engineering
+
+*A real, recent example of the exact transition Mac wants. Cody is a 2nd-degree
+connection (ex-Delinea colleague, 30+ mutuals) who just landed a GTM Engineer role.
+His path is the template. Study it, then copy the mechanics — not the content.*
+
+**The move:** Marketing (demand gen / campaign & program manager at Delinea,
+Turnitin, etc.) → **GTM Engineer at Built** (Jul 2026). No CS degree, no RevOps
+title. Econ degree, Utah.
+
+**How he did it — the mechanics that matter:**
+1. **He built in public, relentlessly.** A steady stream of GTM-automation/AI
+   projects posted on LinkedIn with demos (Loom), and code on **GitHub**. The
+   portfolio *became* the qualification — the title followed the proof.
+2. **Every project solved a real revenue-team problem**, framed in rep/GTM terms
+   ("turn unstructured competitive signal into something a revenue team can use"),
+   not "look what AI can do."
+3. **He shipped working artifacts, with QA/fallbacks** (e.g. workflow "runs on
+   import with a mock-data fallback, no paid keys required") — exactly the JD's
+   "built QA into the systems you ship."
+4. **He earned credentials that signal depth:** Anthropic MCP (Advanced),
+   DeepLearning.AI "Finetuning LLMs."
+
+**His flagship builds (≈ your target portfolio, §6):**
+- **Embers — Closed-Lost Reactivation Engine:** watches lost accounts for
+  "blocker dissolved" signals (new decision-maker, budget event, hiring) → weighted
+  scoring → OpenAI-drafted reactivation email → Slack alert to rep. *Stack: n8n,
+  Clay, OpenAI gpt-4o-mini, Slack.* Public GitHub repo + a full GTM program writeup
+  (gifting, contact-replacement waterfall, loss-reason analysis, holdout
+  measurement, 3-scenario ROI model). **← This is the gold standard to emulate.**
+- **Competitive Intelligence RAG:** public G2 reviews → battle cards + outbound
+  sequences from a plain-English question. *Stack: n8n, Firecrawl, OpenAI
+  embeddings, Pinecone.*
+- **Competitor website change tracker:** *Firecrawl + Supabase + Claude + Streamlit.*
+- **Outbound workflow:** Google Form → ChatGPT → Slack, human-in-the-loop. *Make.*
+- **AI SDR agent ("Tor-AI") at Delinea** via Qualified — booked/influenced meetings.
+- **Parent/child Claude "skill" governance system** (markdown, GitHub) — brand voice
+  across 6 languages, company-wide.
+
+**Stack Cody signals fluency in:** Clay, n8n, Make, HubSpot, OpenAI/Claude, RAG
+(Pinecone), Firecrawl, Supabase, Streamlit, Python/JS, MCP.
+
+**What Mac should take from this:**
+- Copy the *cadence*: ship one build, write it up, post it, put code on GitHub,
+  repeat. 3–4 strong ones is enough to change how recruiters see you.
+- Copy the *framing*: rep-problem first, AI second.
+- Copy the *rigor*: mock-data fallbacks, QA, a short ROI/impact note per build.
+- **Beat him where you're stronger:** Cody had to *argue* sales intuition from a
+  marketing seat. You have real quota reps' scars. Build things only someone who's
+  actually done the job would think of (e.g. the follow-up-email engine Confluent
+  peers still ask you for → productize it as a signal-triggered sequence system).
+
+**Networking play:** Connection request already sent (Pending). Once accepted,
+send a specific, low-ask note — congratulate the Built role, mention the Delinea
+overlap, ask 1–2 sharp questions about how he'd break into GTM-eng today. People
+who just made the jump are the most generous and most current source of intel.
+(Draft in §8.)
 
 ---
 
@@ -190,18 +270,22 @@ Typical shape for a founding RevOps/GTM-eng role at a Series B AI startup
 For each required competency: current level (1–5) → target → action → status.
 *(Placeholders below; Claude fills the "Now" column after interviewing Mac.)*
 
+*"Now" is Mac's inferred baseline (⚠ confirm). Scale 1–5. Note the shape: Mac is
+**strong on the sales/rep side (rows 6, 9)** and needs to build the **engineering
+side (rows 1–5, 7, 8)** — the inverse of Cody's starting point.*
+
 | # | Competency (from JD) | Now | Target | Action to close | Status |
 |---|---|---|---|---|---|
-| 1 | GTM systems built end-to-end (enrichment/routing/scoring/sequencing/hygiene) | _?_ | 4 | Ship 1–2 portfolio builds w/ outcomes (Sec 6) | Not started |
-| 2 | Clay (waterfalls, AI columns, integrations) | _?_ | 4 | Build a real enrichment+scoring table | Not started |
-| 3 | CRM depth (HubSpot / Salesforce) | _?_ | 4 | Free tier build: lifecycle, workflows, reports | Not started |
-| 4 | SQL (funnel/cohort/conversion analysis) | _?_ | 3 | Analyze a sample funnel dataset end-to-end | Not started |
-| 5 | AI/LLM workflows shipped w/ QA | _?_ | 4 | Build an AI research/QBR-prep agent + QA rubric | Not started |
-| 6 | Sequencing / Outreach architecture | _?_ | 3 | Design a multi-touch, signal-triggered sequence | Not started |
-| 7 | Dashboards / reporting | _?_ | 3 | Build a funnel-health exec dashboard | Not started |
-| 8 | APIs / integrations / scripting | _?_ | 3 | Wire 2 tools via webhook/Zapier/Make or Python | Not started |
-| 9 | Sales intuition / rep empathy | _?_ | 4 | Shadow/interview reps; document time-sinks | Not started |
-| 10 | Communicating to leadership w/ a POV | _?_ | 4 | Write up each build as a 1-page exec memo | Not started |
+| 1 | GTM systems built end-to-end (enrichment/routing/scoring/sequencing/hygiene) | ⚠1 | 4 | Ship 2–3 portfolio builds w/ outcomes (§6), Cody-style | Not started |
+| 2 | Clay (waterfalls, AI columns, integrations) | ⚠1 | 4 | Clay 101 → build enrichment+ICP-scoring table | Not started |
+| 3 | CRM as *builder* (HubSpot / Salesforce) | ⚠2 | 4 | HubSpot free tier: lifecycle, workflows, reports | Not started |
+| 4 | SQL (funnel/cohort/conversion analysis) | ⚠1 | 3 | SQL basics → analyze a sample funnel dataset | Not started |
+| 5 | AI/LLM workflows shipped w/ QA | ⚠2 | 4 | Build an AI research/QBR-prep agent + QA rubric | Not started |
+| 6 | Sequencing / Outreach architecture | ⚠4 | 4 | **Strength.** Productize your Confluent follow-up system | Leverage |
+| 7 | Dashboards / reporting | ⚠2 | 3 | Build a funnel-health exec dashboard | Not started |
+| 8 | APIs / integrations / scripting (n8n/Make/webhooks/Python) | ⚠1 | 3 | Learn n8n or Make; wire 2 tools in a real flow | Not started |
+| 9 | Sales intuition / rep empathy | ⚠5 | 4 | **Strength.** Mine your own rep experience for build ideas | Leverage |
+| 10 | Communicating to leadership w/ a POV | ⚠4 | 4 | Write each build up as a 1-page exec memo | Not started |
 
 ---
 
@@ -275,12 +359,35 @@ management.
 
 ---
 
+### 8a. Draft: reconnect note to Cody Goodin (send once connection accepts)
+
+> Cody — congrats on the Built move, saw the Nashville first-day post. Small world:
+> we overlapped at Delinea. I'm coming from the sales side (Datadog now, Confluent
+> before) and I'm building toward a GTM Engineer role — your Embers reactivation
+> engine and the G2→battle-cards RAG are exactly the kind of thing I want to be
+> shipping. If you're open to it, I'd love 15 min on how you'd break in today, and
+> what actually mattered to the teams that hired you. Either way, following along.
+
+*Keep it specific and low-ask. He just made the jump — most generous, most current
+intel source you have. Don't pitch; ask + learn.*
+
+---
+
 ## 9. PROGRESS LOG
 
 Append dated entries. Newest on top.
 
-- **2026-07-20** — Set up coaching system: created `CLAUDE.md` (recruiter/hiring-
-  manager operating model) and this dossier. Captured full JD, decoded the role,
-  built the gap-analysis + portfolio-build frameworks. **Blocked on Mac's
-  background (Section 2)** — next session, interview Mac and populate it, then run
-  the real gap analysis.
+- **2026-07-20 (2)** — Big intel drop from Mac's LinkedIn. (1) Populated Mac's
+  profile from context: **sales at Datadog, ex-Confluent**, deep in cadences/
+  sequencing → **sales intuition is his edge** (a hard JD requirement he already
+  meets). Gaps are the engineering half (Clay, SQL, automations, AI-with-QA).
+  (2) Added §3.5 **Cody Goodin blueprint** — a 2nd-degree, ex-Delinea contact who
+  just made the marketing→GTM-Engineer jump by building in public (n8n/Clay/RAG on
+  LinkedIn+GitHub). His portfolio = Mac's roadmap; Mac is the mirror image (has the
+  sales DNA Cody lacked). (3) Reframed gap analysis around this shape. (4) Drafted a
+  reconnect note to Cody (§8a). **Next: confirm ⚠ items in §2; ship Portfolio Build
+  #1 (recommend productizing Mac's own follow-up/sequence system — plays to his
+  strength while forcing the build skills).**
+- **2026-07-20 (1)** — Set up coaching system: created `CLAUDE.md` (recruiter/
+  hiring-manager operating model) and this dossier. Captured full JD, decoded the
+  role, built the gap-analysis + portfolio-build frameworks.
