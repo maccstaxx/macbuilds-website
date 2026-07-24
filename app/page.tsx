@@ -298,12 +298,12 @@ export default function Home() {
               onChange={e => setAiInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleAiSubmit()}
               placeholder="Describe your product idea..."
-              style={{ flex: 1, background: '#0f0f0f', border: '1px solid #222', borderRadius: '4px', padding: '14px 16px', color: '#fff', fontFamily: 'Space Mono, monospace', fontSize: '13px', outline: 'none' }}
+              style={{ flex: 1, background: '#0f0f0f', border: '1px solid #222', borderRadius: '4px', padding: '14px 16px', color: '#fff', fontFamily: 'Space Mono, monospace', fontSize: '13px', outline: 'none', cursor: 'text' }}
             />
             <button
               onClick={handleAiSubmit}
               disabled={aiLoading || !aiInput.trim()}
-              style={{ background: aiLoading ? '#1a1a1a' : '#fff', color: aiLoading ? '#555' : '#000', border: 'none', borderRadius: '4px', padding: '14px 28px', fontFamily: 'Space Mono, monospace', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', cursor: aiLoading ? 'default' : 'pointer', whiteSpace: 'nowrap' }}
+              style={{ background: aiLoading ? '#1a1a1a' : '#fff', color: aiLoading ? '#555' : '#000', border: 'none', borderRadius: '4px', padding: '14px 28px', fontFamily: 'Space Mono, monospace', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', cursor: aiLoading ? 'default' : 'pointer', whiteSpace: 'nowrap', pointerEvents: 'all' }}
             >
               {aiLoading ? 'BUILDING...' : 'BUILD BLUEPRINT →'}
             </button>
