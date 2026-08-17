@@ -183,26 +183,26 @@ inferred and need Mac's confirmation.*
 
 *A real, recent example of the exact transition Mac wants. Cody is a 2nd-degree
 connection (ex-Delinea colleague, 30+ mutuals) who just landed a GTM Engineer role.
-His path is the template. Study it, then copy the mechanics — not the content.*
+Their path is the template. Study it, then copy the mechanics — not the content.*
 
 **The move:** Marketing (demand gen / campaign & program manager at Delinea,
 Turnitin, etc.) → **GTM Engineer at Built** (Jul 2026). No CS degree, no RevOps
 title. Econ degree, Utah.
 
-**How he did it — the mechanics that matter:**
-1. **He built in public, relentlessly.** A steady stream of GTM-automation/AI
+**How they did it — the mechanics that matter:**
+1. **They built in public, relentlessly.** A steady stream of GTM-automation/AI
    projects posted on LinkedIn with demos (Loom), and code on **GitHub**. The
    portfolio *became* the qualification — the title followed the proof.
 2. **Every project solved a real revenue-team problem**, framed in rep/GTM terms
    ("turn unstructured competitive signal into something a revenue team can use"),
    not "look what AI can do."
-3. **He shipped working artifacts, with QA/fallbacks** (e.g. workflow "runs on
+3. **They shipped working artifacts, with QA/fallbacks** (e.g. workflow "runs on
    import with a mock-data fallback, no paid keys required") — exactly the JD's
    "built QA into the systems you ship."
-4. **He earned credentials that signal depth:** Anthropic MCP (Advanced),
+4. **They earned credentials that signal depth:** Anthropic MCP (Advanced),
    DeepLearning.AI "Finetuning LLMs."
 
-**His flagship builds (≈ your target portfolio, §6):**
+**Their flagship builds (≈ your target portfolio, §6):**
 - **Embers — Closed-Lost Reactivation Engine:** watches lost accounts for
   "blocker dissolved" signals (new decision-maker, budget event, hiring) → weighted
   scoring → OpenAI-drafted reactivation email → Slack alert to rep. *Stack: n8n,
@@ -226,7 +226,7 @@ title. Econ degree, Utah.
   repeat. 3–4 strong ones is enough to change how recruiters see you.
 - Copy the *framing*: rep-problem first, AI second.
 - Copy the *rigor*: mock-data fallbacks, QA, a short ROI/impact note per build.
-- **Beat him where you're stronger:** Cody had to *argue* sales intuition from a
+- **Beat them where you're stronger:** Cody had to *argue* sales intuition from a
   marketing seat. You have real quota reps' scars. Build things only someone who's
   actually done the job would think of (e.g. the follow-up-email engine Confluent
   peers still ask you for → productize it as a signal-triggered sequence system).
@@ -286,6 +286,100 @@ side (rows 1–5, 7, 8)** — the inverse of Cody's starting point.*
 | 8 | APIs / integrations / scripting (n8n/Make/webhooks/Python) | ⚠1 | 3 | Learn n8n or Make; wire 2 tools in a real flow | Not started |
 | 9 | Sales intuition / rep empathy | ⚠5 | 4 | **Strength.** Mine your own rep experience for build ideas | Leverage |
 | 10 | Communicating to leadership w/ a POV | ⚠4 | 4 | Write each build up as a 1-page exec memo | Not started |
+
+---
+
+## 5.5. HOW MAC BREAKS INTO GTM ENGINEERING — the actual path
+
+### The structural truth about this field
+
+GTM Engineering has **no credential path**. No degree, no certification, no
+licensing body. It emerged ~2024–25 and hiring managers have no accepted proxy for
+competence — so they fall back on the only signal available: **can you show me
+systems you built that made a revenue team faster?**
+
+That cuts both ways for Mac:
+- **Good:** nobody can gatekeep him out. He doesn't need permission, a title, or an
+  employer's blessing to become qualified. The tools (Clay, n8n, LLMs) are
+  low-code and largely free-tier. Proof is self-serve and public.
+- **Hard:** there's nowhere to hide. "I'm interested in automation" is worth zero.
+  Only shipped artifacts count.
+
+### The three routes in
+
+**Route A — Build in public → direct hire.** (Cody's path, §3.5.) Ship 3–4 public
+builds, post them, code on GitHub, apply with portfolio + referral. *Fastest if the
+portfolio lands. Fully in Mac's control. Zero permission required.*
+
+**Route B — Convert the day job.** (Underrated; run in parallel.) At Datadog, become
+the rep who automates his own team's busywork. Build it, get it adopted, measure it.
+Result: *"systems I built at a SaaS company, with outcomes and how I measured them"*
+— which is the JD's literal requirement, on employer letterhead rather than a side
+project. **Highest credibility per unit effort.** Also the safest: it's just being
+good at your job.
+
+**Route C — Adjacent-title stepping stone.** Sales Engineer / RevOps Analyst / Sales
+Ops role first, then GTM Engineer in 12–18 months. Lower bar, slower, and Mac
+probably doesn't need it if A+B land.
+
+> **Recommendation: run A and B simultaneously.** B produces the credentialed,
+> metric-backed story that clears the "2–4 yrs RevOps" bar; A produces the public
+> proof and the network. Together they close the gap in ~2 quarters.
+
+### Honest odds on *this specific* Nooks req
+
+**As the hiring manager:** today, Mac's résumé does not clear my screen. The req says
+2–4 years RevOps/SalesOps/SE/GTM-eng with *specific systems built and how success was
+measured*. Mac has 0 years in title and no shipped systems yet. A **founding** role
+is the highest-ambiguity version of the job — I'm not training someone from scratch
+into it.
+
+**As the recruiter:** that's a 6-month problem, not a permanent one. Founding roles
+hire on *conviction*, not checkboxes — an undeniable portfolio plus a warm intro
+beats a title. And the thing Mac already has (real quota-carrying rep intuition) is
+the single hardest item on that list to fake; most applicants will be technical
+people arguing they understand reps. Mac argues the reverse, which is easier to
+prove and rarer.
+
+**So:** treat Nooks as the North Star that sets the bar, not necessarily the first
+application. GTM Engineer roles *broadly* (like Cody's at Built) become winnable
+much sooner. If this exact req is still open in 90 days with a portfolio behind
+him, it's a real shot. If it closes, the same work qualifies him for the next ten.
+
+### The 90-day plan
+
+**Phase 1 — Weeks 1–3: get the tools in your hands.** Learning, not shipping yet.
+| Tool | Why | Target |
+|---|---|---|
+| **Clay** | *The* GTM-eng tool; named in the JD. Free tier. | Build one enrichment waterfall + an AI/LLM column. Do Clay University. |
+| **n8n** (or Make) | Orchestration layer. n8n is what Cody used; more "engineer" coded. | Wire a 3-step flow with a webhook trigger. |
+| **SQL** | JD says "basic SQL" — genuinely basic. | SELECT / JOIN / GROUP BY / date math. ~1 focused week. |
+| **HubSpot** free tier | JD lists it first; Nooks likely runs it. | Lifecycle stages, a workflow, a funnel report. |
+
+**Phase 2 — Weeks 4–9: ship three builds.** One every ~2 weeks. Each = working
+artifact + GitHub repo + a 1-page write-up + a LinkedIn post with a demo. See §6.
+Sequence them: **Build A** (sequencing/signal engine — plays to strength) →
+**Build B** (AI research agent w/ QA — the differentiator) → **Build C** (funnel
+analysis + dashboard — proves analytical rigor).
+
+**Phase 3 — Weeks 10–12: package and campaign.** Rewrite the résumé through the
+GTM-eng lens (§7), reposition LinkedIn, work the referral map (§8), then apply —
+portfolio-first, never a cold form submit.
+
+**Running the whole time (Route B):** pick one manual process on Mac's own team,
+automate it, drive adoption, measure it. That becomes the strongest bullet on the
+résumé because it happened at a real SaaS company with real reps.
+
+### The story that sells the transition
+
+Not "salesperson who wants to switch to tech." It's:
+
+> *"I'm a rep who got tired of watching reps burn half the day on research, CRM
+> hygiene, and rewriting the same follow-up. So I started building the systems that
+> kill that work — here are three of them."*
+
+That narrative is true, it maps 1:1 onto the JD's four pillars, and it reframes the
+sales background as the *qualification* rather than the thing to explain away.
 
 ---
 
@@ -376,6 +470,16 @@ intel source you have. Don't pitch; ask + learn.*
 ## 9. PROGRESS LOG
 
 Append dated entries. Newest on top.
+
+- **2026-08-17** — Mac asked the core question: *"how do I get into this career?"*
+  Added **§5.5 — the actual path**: no-credential-path structural read, three routes
+  (A build-in-public / B convert the day job / C stepping-stone), honest
+  hiring-manager odds on this specific req (does not clear the screen today; a
+  6-month problem, not permanent), a **90-day plan** (wks 1–3 tools → 4–9 ship three
+  builds → 10–12 package & campaign), and the transition narrative. Recommendation:
+  run A+B in parallel. Also corrected Cody's pronouns to they/them in §3.5 (not
+  stated on profile — earlier entry wrongly assumed he/him). **Next: confirm ⚠ items
+  in §2, then spec Build A in detail.**
 
 - **2026-07-20 (2)** — Big intel drop from Mac's LinkedIn. (1) Populated Mac's
   profile from context: **sales at Datadog, ex-Confluent**, deep in cadences/
