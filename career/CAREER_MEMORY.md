@@ -12,16 +12,70 @@
 
 ---
 
+## 0.5. CURRENT SITUATION — ACTIVE SEARCH (as of 2026-08-18)
+
+**Mac is between roles.** Last seat: **AE @ Datadog, 10 months.** Actively looking.
+
+This supersedes earlier guidance. Two things it invalidates:
+- ❌ The **Datadog internal-transfer play** (§5.6 Door 1) — no longer available.
+- ❌ "Test whether you like ops work from your current seat" — no current seat.
+
+And one thing it **changes**: the §5.6 **comp trap no longer applies the same way.**
+The comparison is not "AE OTE vs. analyst salary" — it's "analyst salary vs. zero."
+A RevOps/deal-desk analyst role that was a pay cut in July is a **viable pivot** now.
+
+### The strategy: two-track search, income secured in 60–90 days
+
+Employment gaps compound. Getting paid is priority #1; the pivot rides along.
+
+**Track 1 — Solutions Engineer / Sales Engineer. ⭐ TOP RECOMMENDATION.**
+The Nooks JD literally lists **"Solutions Engineering"** as qualifying experience —
+so an SE seat *counts toward the 2–4 year requirement* in a way another AE seat
+never will. It's technical, it's a well-trodden AE→SE move, it pays comparably
+(often more base / less variable), and the day-to-day (demos, technical problem-
+solving, learning the stack) is genuinely closer to GTM engineering. Mac's Datadog
+background — technical product, technical buyers — is the credibility for this.
+
+**Track 2 — RevOps Analyst / Deal Desk / Sales Ops.** The direct pivot. Lower hit
+rate with no ops experience, but now economically rational (see above). Best odds at
+smaller companies and via deal desk (§5.6 Door 2).
+
+**Track 3 — AE at a modern SaaS company.** The fallback that keeps the résumé
+trajectory clean. Better than a VAR seat.
+
+**Floor: the Insight AE role (§8c).** Take it if nothing better lands or runway gets
+short — but treat it as a *bridge*, explicitly, and negotiate. Datadog → VAR after a
+short stint reads as a downgrade, which is a real cost.
+
+### ⚠ The 10-month problem — fix this first
+
+10 months at Datadog is short. Mac needs a **2-sentence, non-defensive answer** to
+"why did you leave?" that he can deliver flatly and move past. This single thing
+gates every interview in every track. If Confluent was also short, there's a pattern
+to get ahead of; if Confluent was 2–3 years, Datadog reads as one bad fit — fine.
+
+### The one upside of being between roles
+
+**This is the most uninterrupted build time Mac will ever have.** Portfolio work that
+would take 6 months of nights-and-weekends can happen in 6 weeks. It also doubles as
+SE-interview material (technical proof) and RevOps-interview material (systems
+proof). Job search is priority #1; builds fill the gaps — not the reverse.
+
+---
+
 ## 0. CURRENT FOCUS  ⟵ start here each session
 
-- [ ] **Confirm Section 2 (Mac's Profile)** — populated from inference; verify the
-      details marked ⚠. **Priority: Datadog title, tenure/time-in-seat, and comp** —
-      the internal-transfer play (§5.6) depends on all three.
-- [ ] **Start the RevOps on-ramp (§5.6)** — primary near-term track. Begin
-      Salesforce Admin cert + start doing ops work in his current seat.
-- [ ] **Ship Portfolio Build #1** — pick from Section 6; copy the Cody blueprint
-      (Section 3.5). This is what lets Mac skip the analyst rung.
-- [ ] Lock the Gap Analysis (Section 5) once Section 2 is confirmed.
+**⚠ Read §0.5 first — Mac is between roles and actively searching.**
+
+- [ ] **Nail the "why did you leave Datadog after 10 months" answer.** Two sentences,
+      non-defensive. This gates every interview. Do it before applying anywhere.
+- [ ] **Open Track 1: Solutions Engineer roles** (§0.5) — top recommendation; SE
+      counts toward the Nooks 2–4 yr requirement. Build the target list.
+- [ ] **Open Track 2: RevOps Analyst / Deal Desk** — now economically viable.
+- [ ] **Ship Portfolio Build #1 during the search** — the gap is build time. Doubles
+      as SE + RevOps interview material.
+- [ ] ⚠ Confirm: Confluent tenure, reason for the Datadog exit, runway in weeks.
+- [ ] Lock the Gap Analysis (Section 5).
 - [ ] **Networking:** reconnect with Cody Goodin (2nd-degree, ex-Delinea colleague,
       just landed this exact role) — pick his brain on the path. See Section 8.
 
@@ -124,11 +178,14 @@ Ranked by how much they weigh it, based on the JD language:
 inferred and need Mac's confirmation.*
 
 - **Name / pronouns:** Macario ("Mac") Calvo-Johnson · He/Him
-- **Current role:** ⚠ Sales at **Datadog** (likely SDR/BDR or AE — confirm level).
-  Living in prospecting: cadences, sequences, follow-up email craft. Eastern Time.
-- **Prior:** ⚠ **Confluent** (sales — had a "final follow-up email" that performed
+- **Status: ACTIVELY SEARCHING — between roles (confirmed 2026-08-18).**
+- **Most recent:** **Account Executive @ Datadog — 10 months.** Closing seat,
+  technical product, technical buyers. Eastern Time.
+- **Prior:** **Confluent** (sales — had a "final follow-up email" that performed
   well; peers still ask for his cadences). ⚠ Possibly **Delinea** (LinkedIn shows
   Mac & Cody "both worked at Delinea, Feb 2024" — confirm role/dates).
+- ⚠ **Open + important:** tenure at Confluent (is 10 months an outlier or a
+  pattern?), why he left Datadog, and runway (weeks of expenses covered).
 - **Domain:** Enterprise SaaS sales (Datadog, Confluent = strong SDR→AE programs).
 - **Quota-bearing / rep intuition:** **STRONG — this is Mac's edge.** The JD asks
   for "quota-bearing role or alongside reps closely enough to understand where they
@@ -424,7 +481,9 @@ it's what lets Mac skip a rung rather than start at the bottom of a new ladder.
 
 ### The three doors, ranked for Mac
 
-**Door 1 — Internal transfer at Datadog. Highest probability by a wide margin.**
+**Door 1 — ~~Internal transfer at Datadog~~. ❌ DEAD as of 2026-08-18** — Mac is no
+longer at Datadog. Kept for reference only; superseded by §0.5.
+*Original reasoning:* internal transfer was the highest-probability door because it*
 Bypasses the "no RevOps experience" screen entirely: they already trust him, he
 keeps tenure/comp/level, and he learns on a mature ops org's dime. Mechanics:
 ⚠ confirm Datadog's internal-mobility policy (commonly ~12–18 months in seat +
@@ -674,6 +733,18 @@ external with a portfolio instead.
 ## 9. PROGRESS LOG
 
 Append dated entries. Newest on top.
+
+- **2026-08-18 (4)** — **Major status change: Mac is between roles.** Was an **AE at
+  Datadog for 10 months**; actively searching. Added **§0.5**. This kills the
+  Datadog internal-transfer play (§5.6 Door 1, now marked dead) and the
+  "test ops from your current seat" advice — but **reverses the comp trap**: the
+  comparison is now analyst-salary-vs-zero, making a RevOps/deal-desk pivot
+  economically rational. New strategy: **two-track search, income in 60–90 days**,
+  led by **Solutions Engineering** (⭐ the Nooks JD names SE as qualifying
+  experience, so it counts toward the 2–4 yr bar in a way another AE seat does not).
+  Insight AE demoted to floor/bridge option. Flagged the **10-month tenure story** as
+  the gating item before any application. **Next: confirm Confluent tenure, exit
+  reason, and runway; build the SE target list; start Build #1.**
 
 - **2026-08-18 (3)** — Mac surfaced an **Insight AE role** (Enterprise & Corporate,
   1–3 yrs exp, $1M bookings yr 1) and asked how to transition *from* it. Added
