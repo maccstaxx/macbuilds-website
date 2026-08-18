@@ -551,9 +551,62 @@ intel source you have. Don't pitch; ask + learn.*
 
 ---
 
+## 8b. JOB-SEARCH TARGETS & BOARDS
+
+### Insight Enterprises (searched 2026-08-18) — ⚠ verify all, most domains blocked here
+
+| Role | Location | Read |
+|---|---|---|
+| **Sales Commissions Analyst / Sr** | **Chandler, AZ (US)** | Real, RevOps-adjacent, US-based. Closest fit found. |
+| Deal Desk Financial Analyst | **Pasig, Philippines** | ❌ Not US. 3+ yrs pricing/finance/deal-desk required. |
+| Senior Revenue Operations Manager | ⚠ likely **UK** (£62–80K) | ❌ Not US; ⚠ unconfirmed it's Insight *Enterprises*. |
+
+**⚠ NAME TRAP — two different companies:**
+- **Insight Enterprises** (NASDAQ: NSIT) — Fortune 500 IT solutions integrator,
+  ~$8.2B rev, HQ Chandler AZ. The one Mac asked about.
+- **Insight Global** — a *staffing agency*. Its "Sales Operations Analyst I"
+  (Chandler AZ, ~$23–29/hr contract) shows up in the same searches. Not the same
+  company, and a contract staffing role is not the RevOps entry Mac wants.
+
+**Strategic read (hiring-manager hat):** Insight Enterprises is a
+reseller/VAR, not a SaaS product company. Its "deal desk" is about product margin,
+distribution pricing, and vendor rebates — *not* SaaS subscription/ARR deal desk.
+That's a real difference in skill and in résumé signal: it builds toward IT-channel
+finance ops, not toward the modern GTM stack (Clay/HubSpot/AI workflows) that Nooks
+and companies like it hire for. It would eventually clear a "2–4 yrs RevOps" bar,
+but it points away from the GTM-eng destination in §5.5.
+Also: Chandler AZ hybrid vs. Mac's Eastern Time, and likely a pay cut from a
+Datadog AE seat — the §5.6 comp trap.
+
+**⚠ Open question for Mac:** why Insight Enterprises specifically? A referral, a
+connection, an Arizona tie? That changes the answer entirely — a warm intro to a
+mediocre-fit company can beat a cold app to a great-fit one.
+
+### Boards worth working
+
+- **RevPath** (`revpath.dealhub.io`) — RevOps/deal-desk-specific job board. Best
+  find of this search; bookmark it.
+- Insight Enterprises' own portals: `jobsearch.insight.com` and
+  `careers.insight.com/careers/search?query=*&location=Chandler,Arizona,United+States`
+- LinkedIn Jobs saved searches: "Revenue Operations Analyst", "Deal Desk Analyst",
+  "Sales Operations Analyst", "GTM Engineer" — set alerts.
+- ⚠ Most job domains are egress-blocked in this environment; Mac must verify live
+  status himself. Claude can analyze any posting he pastes in.
+
+---
+
 ## 9. PROGRESS LOG
 
 Append dated entries. Newest on top.
+
+- **2026-08-18 (2)** — Searched Insight Enterprises for deal desk / RevOps / GTM-eng
+  openings (§8b). Found: **Sales Commissions Analyst (Chandler AZ)** = closest US
+  fit; **Deal Desk Financial Analyst** = Philippines; **Sr RevOps Manager** = likely
+  UK. Flagged the **Insight Enterprises vs. Insight Global** name trap. Strategic
+  caution logged: Insight Enterprises is a VAR/reseller, so its deal desk builds
+  IT-channel pricing skill rather than SaaS RevOps — points away from the GTM-eng
+  destination. **Asked Mac why Insight specifically (referral? AZ tie?).** Added
+  RevPath as a RevOps-specific job board.
 
 - **2026-08-18** — Mac reframed the target: *"consider it RevOps — how do I get in
   with my background?"* **This is a better-odds framing and is now the primary
