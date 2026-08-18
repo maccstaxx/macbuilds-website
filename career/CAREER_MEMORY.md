@@ -28,7 +28,11 @@ A RevOps/deal-desk analyst role that was a pay cut in July is a **viable pivot**
 
 Employment gaps compound. Getting paid is priority #1; the pivot rides along.
 
-**Track 1 — Solutions Engineer / Sales Engineer. ⭐ TOP RECOMMENDATION.**
+> 🔄 **REORDERED 2026-08-18 by the ladder map (§5.7)** — RevOps is the documented
+> feeder into GTM engineering; SE is not. Track 2 below is now the lead play and
+> Track 1 (SE) is demoted. Read §5.7 before working this list.
+
+**Track 1 — Solutions Engineer / Sales Engineer. ⚠ DEMOTED — see §5.7.**
 The Nooks JD literally lists **"Solutions Engineering"** as qualifying experience —
 so an SE seat *counts toward the 2–4 year requirement* in a way another AE seat
 never will. It's technical, it's a well-trodden AE→SE move, it pays comparably
@@ -526,6 +530,64 @@ résumé material either way.
 
 ---
 
+## 5.7. THE LADDER MAP — where Mac sits vs. the target
+
+*Source: Bitscale "GTM job titles, entry to VP" (9 lanes × 6 levels), shared by Mac
+2026-08-18. Treat as a reasonable market map, not gospel — the chart itself says
+"years are typical ranges, not rules."*
+
+### Where Mac is and where the target is
+
+| | Lane | Level | Title band |
+|---|---|---|---|
+| **Now** | Sales | **L2–L3** | AE (SMB → mid-market/enterprise) |
+| **Next hop** | RevOps | **L2** | RevOps analyst · **Deal desk analyst** · Sales ops specialist |
+| **Then** | GTM engineering | **L2** | GTM engineer · Outbound engineer · Automation engineer |
+| **Target** | GTM engineering | **L3** | **Founding GTM engineer** ← the Nooks role |
+
+### ⚠ Two findings that change the plan
+
+**1. The Nooks role is L3 senior IC (4–7 yrs), not an entry point.**
+"Founding GTM engineer" sits in the *senior IC* column alongside Lead GTM Engineer.
+That's **two levels** above where Mac would enter the RevOps lane. Realistically a
+**2-hop, ~3–5 year path** — not a 90-day sprint. Earlier framing ("6-month problem")
+was too optimistic; the honest version is that the *first hop* is a 6-month problem.
+
+**2. GTM engineering has NO entry tier — "most arrive from SDR, RevOps or growth."**
+This is the single most actionable line on the chart. You cannot go AE → GTM
+engineer directly; the lane has no front door. **RevOps is the documented on-ramp.**
+
+### 🔄 This reorders the tracks in §0.5
+
+- **PROMOTE → Track 1: RevOps L2 (Deal Desk Analyst / RevOps Analyst).** The chart
+  names RevOps as a primary feeder into GTM engineering. This is now the main play.
+  Mac's ~3–4 yrs of sales means he targets **L2, not L1** — his experience counts.
+- **DEMOTE → Track 2: Solutions Engineering.** ⚠ Partial correction to prior advice:
+  the chart says SE is "rarely an entry role — most arrive from **support, CS or
+  product**," *not* from AE. The Nooks JD does still name Solutions Engineering as
+  qualifying, so an SE seat would count — but the on-ramp from an AE seat is
+  narrower than earlier sessions implied. Keep it open; stop leading with it.
+- **Track 3: SaaS AE** unchanged — the income/trajectory fallback.
+
+### Useful distinctions to use in the search
+
+- **RevOps vs. GTM engineer:** "RevOps runs the system of record. A GTM engineer
+  builds the pipeline machine on top of it: enrichment, waterfalls, sequences,
+  agents. One protects data integrity. The other manufactures accounts."
+  → **Mac's instincts (sequences, outbound, follow-up systems) are GTM-engineering
+  flavored, not RevOps flavored.** Good sign for the destination; means the RevOps
+  hop is a means, not the end.
+- **Sales ops vs. RevOps:** sales ops serves sales; RevOps owns marketing + sales +
+  CS as one funnel. "Renaming the first to the second gives you a title, not a
+  function." → screen postings for actual scope.
+- **Manager title vs. manager role:** in RevOps, an L2/L3 "manager" is usually an
+  **individual contributor**. → don't skip "RevOps Manager" postings assuming they
+  need people-management experience Mac lacks.
+- GTM eng has no C-level yet; it rolls up to CRO or VP RevOps — consistent with the
+  Nooks role reporting to the VP of RevOps.
+
+---
+
 ## 6. PORTFOLIO BUILDS — proof-of-work that doubles as interview material
 
 The fastest path to this role is **artifacts, not courses.** Each build below
@@ -733,6 +795,19 @@ external with a portfolio instead.
 ## 9. PROGRESS LOG
 
 Append dated entries. Newest on top.
+
+- **2026-08-18 (5)** — Mac shared the Bitscale **GTM ladder chart**; added **§5.7**
+  mapping him onto it. Two findings that move the plan: (1) **"Founding GTM
+  engineer" is an L3 senior-IC title (4–7 yrs)** — two levels above a RevOps entry
+  point, so the Nooks role is realistically a **2-hop, 3–5 year** path, not a
+  90-day one (earlier "6-month problem" framing was too optimistic; it's the *first
+  hop* that's a 6-month problem). (2) **GTM engineering has no entry tier — arrivals
+  come from "SDR, RevOps or growth."** So RevOps is the documented on-ramp:
+  **promoted RevOps/Deal Desk to the lead track, demoted Solutions Engineering**
+  (chart says SE arrivals come from support/CS/product, not AE — partial correction
+  to session 4's top recommendation). Also logged: Mac targets RevOps **L2**, not L1;
+  and his instincts read GTM-engineering-flavored (sequences/outbound) rather than
+  RevOps-flavored, which confirms the destination.
 
 - **2026-08-18 (4)** — **Major status change: Mac is between roles.** Was an **AE at
   Datadog for 10 months**; actively searching. Added **§0.5**. This kills the
