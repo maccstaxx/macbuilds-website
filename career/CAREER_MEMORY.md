@@ -582,6 +582,82 @@ Datadog AE seat — the §5.6 comp trap.
 connection, an Arizona tie? That changes the answer entirely — a warm intro to a
 mediocre-fit company can beat a cold app to a great-fit one.
 
+### 8c. THE INSIGHT AE ROLE — decision + transition playbook
+
+**The role:** Account Executive, Enterprise & Corporate. 1–3 yrs technical sales
+required. **$1M bookings in first 12 months.** Up to 30 accounts. Selling Insight's
+solution lines (Devices, Infrastructure, Microsoft, Google, ServiceNow) — moving
+clients from transactional product purchases toward multi-engagement solutions.
+
+#### Is it the right move? — depends entirely on Mac's current level (still ⚠)
+
+- **If Mac is an SDR/BDR at Datadog:** this is a genuine **promotion** — a first
+  closing seat. Carrying a bag and hitting $1M gives him the quota-bearing
+  credential the Nooks JD explicitly asks for. **Worth taking.**
+- **If Mac is already an AE at Datadog:** this is **lateral at best, likely
+  backward.** Same function, less relevant environment: a 35-year-old VAR vs. a
+  modern high-growth SaaS company. Datadog's GTM stack is far closer to what
+  RevOps/GTM-eng employers hire for. Would need a big comp or scope reason.
+
+⚠ **Comp diligence before signing:** VAR bookings ≠ SaaS ARR. $1M of resold
+hardware/software at channel margin is a very different economic unit from $1M of
+SaaS ARR. **Ask whether the comp plan pays on revenue or on gross margin** — it
+changes the earnings math completely. Also note "1–3 years" signals a junior AE
+band.
+
+#### If he takes it — the transition playbook
+
+**Phase 1 (months 0–6): be good at the job. Non-negotiable.**
+Nobody sponsors an internal transfer for someone missing quota. Hit the number.
+This is the price of admission for every other phase.
+
+**Phase 2 (months 3–12): become the systems person on the sales floor.**
+Automate *his own* workflow first, then give it to peers. **Adoption by other reps
+is the whole point** — it's the exact "diagnose → ship → get adopted" loop the Nooks
+JD describes, and it converts a sales seat into ops evidence. Document hours saved
+and deals influenced with real numbers.
+
+**Phase 3 (months 6–18): get visible to Deal Desk and RevOps.**
+Uniquely available from an AE seat at Insight: he'll interact with deal desk on
+every complex quote. Be the AE who brings structured feedback instead of
+complaints. Ask what's broken, volunteer for pilots and UAT, build the
+relationships that decide internal transfers. Insight has a real ops org in
+Chandler (deal desk, commissions, RevOps — see §8b).
+
+**Phase 4 (months 12–24): move.** Internal transfer to Deal Desk or RevOps, or jump
+externally carrying both the AE credential *and* the portfolio.
+
+#### What to build from that seat (dual-purpose: makes money AND is portfolio)
+
+1. **Hardware/software refresh-signal engine.** ⭐ Best idea for this specific seat.
+   VAR demand is genuinely predictable — warranty expirations, EOL/EOS
+   announcements, lease ends, support renewal dates. Build a system that tracks
+   those across his 30 accounts and surfaces a prioritized queue. This is *literally*
+   the JD's "signal-based prioritization so reps work intelligent queues," it's
+   defensible IP, and it should directly help him hit $1M.
+2. **Multi-vendor quote/BOM automation.** VAR quoting is famously slow. Anything
+   that compresses it is instantly valuable and deal-desk-adjacent.
+3. **Account research agent** for the 30 named accounts (with a QA rubric).
+4. **Whitespace / cross-sell analysis** across the account set — which solution
+   lines are missing where. Proves analytical rigor.
+5. **Pipeline hygiene automation** — the CRM-hygiene pillar, straight from the JD.
+
+#### ⚠ The risk to name out loud
+
+The failure mode is predictable and common: hit quota, make money, get comfortable,
+and three years later be a VAR AE with no ops credentials and a résumé that's drifted
+*further* from GTM engineering. **The job will never push him toward this
+transition** — every incentive in a sales seat points at the number. It only happens
+with deliberate, sustained side effort.
+
+Also: taking the role is realistically a **~2-year commitment** (leaving in under 18
+months reads badly). That's the true cost of this decision — not the salary, the
+clock.
+
+**Guardrail:** if by month 9 he hasn't shipped and gotten *one* build adopted by
+peers, the transition isn't happening organically — treat that as the signal to go
+external with a portfolio instead.
+
 ### Boards worth working
 
 - **RevPath** (`revpath.dealhub.io`) — RevOps/deal-desk-specific job board. Best
@@ -598,6 +674,17 @@ mediocre-fit company can beat a cold app to a great-fit one.
 ## 9. PROGRESS LOG
 
 Append dated entries. Newest on top.
+
+- **2026-08-18 (3)** — Mac surfaced an **Insight AE role** (Enterprise & Corporate,
+  1–3 yrs exp, $1M bookings yr 1) and asked how to transition *from* it. Added
+  **§8c**: verdict is conditional on Mac's current level (promotion if he's an
+  SDR/BDR; lateral-to-backward if he's already a Datadog AE), comp diligence on
+  revenue-vs-margin, a 4-phase transition playbook (hit quota → become the systems
+  person on the floor → get visible to deal desk/RevOps → move at 12–24 mo), five
+  dual-purpose builds led by a **hardware refresh-signal engine**, and the honest
+  risk that the seat's incentives never push toward the transition. Added a month-9
+  guardrail. **BLOCKING: Mac's current title/level — three sessions of asking; this
+  single fact flips the recommendation.**
 
 - **2026-08-18 (2)** — Searched Insight Enterprises for deal desk / RevOps / GTM-eng
   openings (§8b). Found: **Sales Commissions Analyst (Chandler AZ)** = closest US
