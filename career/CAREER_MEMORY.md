@@ -15,9 +15,12 @@
 ## 0. CURRENT FOCUS  ⟵ start here each session
 
 - [ ] **Confirm Section 2 (Mac's Profile)** — populated from inference; verify the
-      details marked ⚠ (current title/level, Delinea, tools, timeline, comp).
+      details marked ⚠. **Priority: Datadog title, tenure/time-in-seat, and comp** —
+      the internal-transfer play (§5.6) depends on all three.
+- [ ] **Start the RevOps on-ramp (§5.6)** — primary near-term track. Begin
+      Salesforce Admin cert + start doing ops work in his current seat.
 - [ ] **Ship Portfolio Build #1** — pick from Section 6; copy the Cody blueprint
-      (Section 3.5). This is the single highest-leverage action.
+      (Section 3.5). This is what lets Mac skip the analyst rung.
 - [ ] Lock the Gap Analysis (Section 5) once Section 2 is confirmed.
 - [ ] **Networking:** reconnect with Cody Goodin (2nd-degree, ex-Delinea colleague,
       just landed this exact role) — pick his brain on the path. See Section 8.
@@ -383,6 +386,87 @@ sales background as the *qualification* rather than the thing to explain away.
 
 ---
 
+## 5.6. THE REVOPS PATH — the realistic on-ramp
+
+*Added 2026-08-18 when Mac reframed the goal from "founding GTM Engineer" to
+"RevOps, broadly." **This reframe materially improves his odds** and should be
+treated as the primary near-term track, with GTM-eng (§5.5) as the destination.*
+
+### Why RevOps is a much better entry point than the Nooks req
+
+| | Founding GTM Engineer | RevOps |
+|---|---|---|
+| Career ladder | None — brand-new field | Established, with real entry titles |
+| Credential | None exists | **Salesforce Admin cert** is genuinely recognized |
+| Typical origin story | Technical/marketing person | **Ex-rep who got good at systems** ← Mac |
+| Entry points | Basically zero | Analyst, Deal Desk, Sales Systems, Enablement Ops |
+| Internal transfer | Rare | **The single most common route in** |
+
+The most common RevOps origin story *is* Mac's story: a rep who got tired of broken
+process and started fixing it. In GTM-eng he's an outsider arguing his way in; in
+RevOps he's the canonical candidate profile.
+
+### ⚠ The comp trap — read before doing anything
+
+A Datadog AE at/near quota likely out-earns an entry-level RevOps Analyst,
+possibly by a lot. Market-general bands (⚠ verify against levels.fyi and live
+postings, do not treat as fact):
+- RevOps / Sales Ops Analyst (entry): materially below a productive AE's OTE
+- Senior Analyst / Manager: roughly comparable
+- Director+ / **GTM Engineer**: above — note the Nooks req posts **$160–180K base**
+
+**Implication:** do *not* take an external entry-level analyst role as the first
+move — that's the expensive door. The two doors that avoid the pay cut are the
+**internal transfer** (keeps level and band) and **skipping the analyst rung
+entirely** by arriving with a portfolio strong enough to enter at Senior/Manager or
+straight into GTM-eng. This is precisely why the build work in §6 still matters:
+it's what lets Mac skip a rung rather than start at the bottom of a new ladder.
+
+### The three doors, ranked for Mac
+
+**Door 1 — Internal transfer at Datadog. Highest probability by a wide margin.**
+Bypasses the "no RevOps experience" screen entirely: they already trust him, he
+keeps tenure/comp/level, and he learns on a mature ops org's dime. Mechanics:
+⚠ confirm Datadog's internal-mobility policy (commonly ~12–18 months in seat +
+manager support), build relationships inside the RevOps org, and start doing
+ops-flavored work *in his current seat* before ever asking.
+
+**Door 2 — Deal Desk / Sales Systems as the side door. Underrated.**
+Deal Desk is the most natural rep→ops bridge: quoting, discounting, approvals,
+contract mechanics — Mac already knows this from the other side of the table. Less
+competitive than pure analyst reqs, and a clean ladder onward to RevOps Manager.
+
+**Door 3 — RevOps at a smaller / earlier-stage company.**
+Smaller orgs hire generalists and genuinely value the closing experience; "first
+RevOps hire" roles treat an ex-rep as an asset, not a risk. Trade-off: lower comp
+than Datadog and little mentorship — you're figuring it out alone.
+
+### What to actually do
+
+1. **Salesforce Admin certification.** The one real credential in RevOps. Trailhead
+   is free to study; exam ~$200. ~6–10 weeks part-time. Clearest possible "I'm
+   serious about ops" signal on a rep's résumé.
+2. **Become the visible ops person on your own team — starting now.** Own the
+   team's reporting, fix the pipeline hygiene, build the territory or
+   conversion analysis nobody's doing. This is Route B from §5.5 and it is the
+   actual unlock: it produces real outcomes at a real SaaS company.
+3. **SQL + a BI tool.** RevOps runs on data. SQL basics plus familiarity with
+   whatever Datadog uses (Tableau / Looker / Sigma).
+4. **Get inside the Datadog RevOps org socially.** Coffee chats, ask what they're
+   working on, volunteer for pilots and UAT. Internal referral decides transfers.
+5. **Portfolio, framed as ops** (§6): funnel/conversion analysis, territory model,
+   forecast-accuracy analysis — not just automations.
+
+### The honest caveat
+
+RevOps is detail, data, and documentation work with far less of the momentum,
+relationship, and winning that sales runs on. Plenty of reps make the switch and
+miss the chase. Before committing, Mac should do #2 above for a month and notice
+whether he actually *enjoys* it — that's a cheap, reversible test and it doubles as
+résumé material either way.
+
+---
+
 ## 6. PORTFOLIO BUILDS — proof-of-work that doubles as interview material
 
 The fastest path to this role is **artifacts, not courses.** Each build below
@@ -470,6 +554,20 @@ intel source you have. Don't pitch; ask + learn.*
 ## 9. PROGRESS LOG
 
 Append dated entries. Newest on top.
+
+- **2026-08-18** — Mac reframed the target: *"consider it RevOps — how do I get in
+  with my background?"* **This is a better-odds framing and is now the primary
+  near-term track**, with GTM-eng as the destination. Added **§5.6**: why RevOps
+  suits Mac (the canonical RevOps origin story *is* ex-rep-fixes-broken-process),
+  the **comp trap** (an external entry-level analyst role likely means a real pay
+  cut from a Datadog AE seat — avoid that door; use internal transfer or skip the
+  analyst rung with a portfolio), three ranked doors (**internal transfer at
+  Datadog** > Deal Desk side door > small-co RevOps), the action list (Salesforce
+  Admin cert, become the visible ops person on his own team, SQL+BI, network into
+  Datadog RevOps), and the honest caveat that Mac should test whether he actually
+  enjoys ops work before committing. **Next: confirm ⚠ items in §2 — especially
+  Datadog title/tenure and comp — since the internal-transfer play depends on
+  time-in-seat.**
 
 - **2026-08-17** — Mac asked the core question: *"how do I get into this career?"*
   Added **§5.5 — the actual path**: no-credential-path structural read, three routes
