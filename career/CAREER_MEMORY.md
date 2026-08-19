@@ -5,10 +5,10 @@
 > the source of truth for Mac's push toward this role.
 
 **Owner:** Mac (mac.j300@gmail.com)
-**Target role:** Founding GTM Engineer, Nooks — Revenue Operations
-**Comp:** $160K–$180K base + equity + commission · US remote (any time zone)
-**Posting:** https://jobs.ashbyhq.com/nooks/988cc2fa-111c-4b20-b4a4-5fd3120e367c
-**Last updated:** 2026-07-20
+**Destination role:** Founding GTM Engineer, Nooks — RevOps (§1) · $160–180K
+**Near-term target:** RevOps Associate archetype — **EliseAI** (§1.5) · $90–130K
+**Status:** ⚠ Between roles, actively searching — read §0.5 first
+**Last updated:** 2026-08-18
 
 ---
 
@@ -73,11 +73,14 @@ proof). Job search is priority #1; builds fill the gaps — not the reverse.
 
 - [ ] **Nail the "why did you leave Datadog after 10 months" answer.** Two sentences,
       non-defensive. This gates every interview. Do it before applying anywhere.
-- [ ] **Open Track 1: Solutions Engineer roles** (§0.5) — top recommendation; SE
-      counts toward the Nooks 2–4 yr requirement. Build the target list.
-- [ ] **Open Track 2: RevOps Analyst / Deal Desk** — now economically viable.
-- [ ] **Ship Portfolio Build #1 during the search** — the gap is build time. Doubles
-      as SE + RevOps interview material.
+- [ ] **START SQL TODAY.** Hard requirement in the §1.5 archetype and the #1 gap.
+      ~4–6 weeks to functional. Nothing else unblocks as much.
+- [ ] **Start Salesforce Admin cert** (parallel, ~6–10 wks) — converts the biggest
+      experience ❌ into a ⚠.
+- [ ] **Build the ~20-role target list** off the §1.5 archetype: RevOps
+      Associate/Analyst + Deal Desk Analyst at high-growth AI/SaaS companies.
+- [ ] **Apply to EliseAI + ask Alec for the referral** — low cost, real connection.
+- [ ] **Ship Portfolio Build #1 in Clay** — their stack *and* the Nooks stack.
 - [ ] ⚠ Confirm: Confluent tenure, reason for the Datadog exit, runway in weeks.
 - [ ] Lock the Gap Analysis (Section 5).
 - [ ] **Networking:** reconnect with Cody Goodin (2nd-degree, ex-Delinea colleague,
@@ -173,6 +176,86 @@ Ranked by how much they weigh it, based on the JD language:
    tool) + **HubSpot/Salesforce** + **SQL**.
 4. **Sales intuition** — you get the rep's day.
 5. **Ownership in ambiguity** — founding role, no scaffolding.
+
+---
+
+## 1.5. NEAR-TERM TARGET — the EliseAI archetype ⭐
+
+*Mac found this 2026-08-18 and called it "the role I need to build towards." He's
+right. **This is now the operative near-term target; Nooks (§1) is the
+destination.** Treat this JD as the archetype to build against — not just this one
+posting.*
+
+**Role:** Revenue Operations Associate @ **EliseAI** · New York, NY · **on-site 5
+days/wk** · **$90–130K** + equity · Series E, $250M led by a16z, 201–500 employees.
+
+### Why this is the right target — it maps almost perfectly
+
+1. **It's RevOps L2** — exactly the next hop on the ladder map (§5.7).
+2. **⭐ The stack is the Nooks stack:** *"Salesforce, HubSpot, IronClad, **Clay**,
+   **Outreach**, ZoomInfo."* Clay and Outreach are named in the Nooks JD too. Time
+   in this seat is *directly* transferable to the destination.
+3. **A deal desk specialization path exists:** *"Deal Strategy & Operations — ...
+   help build our deal desk motion within a rapidly evolving Quote-to-Cash
+   environment."* That's §5.6 Door 2, offered as a formal track.
+4. **The GTM Strategy path is the Nooks JD in miniature:** *"own dashboards &
+   analytics, build and adjust territories, identify process gaps, translate
+   business needs into scalable operational and technical solutions, and drive
+   adoption."*
+5. **⭐ Mac's sales background is a LISTED REQUIREMENT:** *"Experience working with
+   Sales and effectively speaking to key processes and data."* Not a liability to
+   explain away — a box he already checks.
+6. **The AI-builder requirement is the portfolio thesis, verbatim:** *"Curious and
+   scrappy builder who enjoys figuring things out, automating manual work, and
+   owning projects end-to-end (experience with leveraging AI to efficiently
+   discover, test, and implement solutions)."*
+7. **It's an applied-AI company** — same category as Nooks. Strong résumé line, and
+   far better trajectory than a VAR seat.
+
+### Honest match assessment (hiring-manager hat)
+
+| Requirement | Mac | Note |
+|---|---|---|
+| Works with Sales, speaks to process + data | ✅ | Genuine strength |
+| Scrappy builder, automates manual work, AI-in-practice | ⚠ | **Portfolio closes this** |
+| Prioritize + execute in unstructured environment | ✅ | Startup-sales muscle |
+| **Comfortable querying data with SQL** | ❌ | **Hard requirement. #1 gap.** |
+| RevOps/Salesforce at SaaS ·or· IB ·or· MBB ·or· analytical finance role | ❌ | The primary experience bucket — Mac is none of these |
+| On-site NYC 5 days/week | ⚠ | ⚠ Confirm Mac's location/willingness |
+
+**LinkedIn flagged job fit as LOW** and "missing some required qualifications" —
+consistent with the two ❌ rows. That's data, not destiny (a referral overrides an
+algorithm), but it's an accurate read of the gap today.
+
+### 🎯 The gap-closing plan — ~8–12 weeks, not 3–5 years
+
+This is the key insight: **this archetype is far closer than Nooks.** Concretely:
+
+1. **SQL — start today, ~4–6 weeks.** Explicitly required and probably screened.
+   SELECT/JOIN/GROUP BY/window functions/date math. Highest-priority single item.
+2. **Salesforce Admin cert — ~6–10 weeks (parallel).** Directly attacks the
+   "RevOps **or Salesforce** at a high-growth SaaS company" bucket. This is the
+   cheapest way to convert a ❌ into a ⚠.
+3. **Portfolio build using *their* stack.** Build in **Clay** specifically — then
+   Mac can speak to the exact tool in their listed stack. Pair with an AI/LLM step
+   and a QA rubric to hit the "leveraging AI" requirement.
+4. **Learn quote-to-cash / deal desk vocabulary** — CPQ, approval matrices,
+   discounting, order forms, revenue reconciliation. Cheap to learn, and it unlocks
+   the Deal Strategy specialization path.
+5. **Frame the sales story as the qualification** (§5.5) — he's the rep who saw
+   where the process broke and started fixing it.
+
+### Strategy: build toward the archetype, not this one posting
+
+**This specific req:** reposted 2 weeks ago, 100+ applicants, on-site NYC, and two
+real gaps. Apply anyway — cost is ~20 minutes and **⚠ Mac has a network connection
+there ("Alec and others in your network")** — a referral converts a LOW algorithmic
+score into an actual conversation. But expect nothing from it.
+
+**The real play:** this JD is a *template*. Build a target list of ~20 comparable
+roles — RevOps Associate/Analyst and Deal Desk Analyst at high-growth AI/SaaS
+companies — and set alerts. Roles like this open constantly; the archetype is
+stable even though any single posting is a lottery ticket.
 
 ---
 
@@ -795,6 +878,20 @@ external with a portfolio instead.
 ## 9. PROGRESS LOG
 
 Append dated entries. Newest on top.
+
+- **2026-08-18 (6)** — Mac found the **EliseAI RevOps Associate** posting and called
+  it the role to build toward. **Agreed — promoted to near-term target (§1.5);
+  Nooks is now framed as the destination.** Why it fits: RevOps L2 (the next
+  ladder hop), stack includes **Clay + Outreach** (same as the Nooks JD, so the
+  seat is directly transferable), a formal **deal desk specialization path**, and
+  crucially *"experience working with Sales"* is a **listed requirement** — Mac's
+  background is a checked box, not a liability. Two real ❌: **SQL** (hard
+  requirement, #1 gap) and the primary experience bucket (RevOps/SFDC/IB/MBB/
+  finance). LinkedIn scored fit LOW, consistent with that. **Key reframe: this
+  archetype is ~8–12 weeks away, not 3–5 years.** Plan: SQL now, SFDC Admin cert in
+  parallel, portfolio build *in Clay*, learn quote-to-cash vocabulary. Apply to this
+  posting via the network connection (Alec) but treat it as a template — build a
+  ~20-role target list of the same archetype.
 
 - **2026-08-18 (5)** — Mac shared the Bitscale **GTM ladder chart**; added **§5.7**
   mapping him onto it. Two findings that move the plan: (1) **"Founding GTM
