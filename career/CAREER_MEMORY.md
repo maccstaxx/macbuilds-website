@@ -950,6 +950,20 @@ external with a portfolio instead.
 
 Append dated entries. Newest on top.
 
+- **2026-08-18 (8)** — Mac shared a 25-role LinkedIn GTM-Engineer search and asked for
+  every posting's requirements. **LinkedIn + all ATS hosts are egress-blocked**, so
+  individual JDs could not be fetched; built
+  **[`GTM_ENGINEER_SPEC.md`](GTM_ENGINEER_SPEC.md)** instead from 3 full JDs
+  (ButterflyMX/Nooks/EliseAI) + aggregate market data. Key findings: **(1) ⭐ the
+  coding premium** — low-code operators (Clay+HubSpot) ~$90–108K vs high-code
+  (adds Python/SQL) ~$135–210K, a $40–45K gap; the roles on Mac's list pay
+  $150–207K, i.e. the *high-code* tier, so **SQL + Python are tier-defining, not
+  optional**. (2) Tool frequency: **Clay 61%**, HubSpot 52%, Outreach 49%, SFDC 45%,
+  SQL 38%, Python 38%, n8n 28%. (3) **Nearly every role on the list is senior IC
+  (4+ yrs)** — it's a *specification*, not an application list. (4) **Six roles have
+  a connection/alumni path** — the highest-value column on the page. (5) Market grew
+  ~205% YoY (~1,400 → 3,000+ postings), so the bar isn't running away.
+
 - **2026-08-18 (7)** — Mac stepped back from job-hunting to ask about **direction**.
   Added **§0.6** as the new top-level frame. Named the pattern: five targets in three
   days means postings are setting his direction, not the other way round. Pulled the
