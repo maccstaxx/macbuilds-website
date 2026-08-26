@@ -76,6 +76,62 @@ manager, and builds like an engineer."*
 
 ---
 
+## 2.5. ⚠⚠ THE BIGGEST FINDING — "GTM Engineer" is TWO different jobs
+
+*Added after reading six full JDs (2026-08-18). This supersedes the softer
+"coding premium" framing in §5 — the gap is not a pay band, it's a different job.*
+
+### Tier A — "GTM Engineer" that means **software engineer** ($140–250K)
+
+| Company | Comp | What they actually require |
+|---|---|---|
+| **CrowdStrike** Sr. AI Growth Eng | **$160–250K** | **8+ yrs full-stack**, Python + JS/TS, **React production apps**, LLM APIs at scale, eval frameworks, systems design, REST/webhooks/OAuth, **CI/CD, containerization, AWS**. CS degree or equivalent. |
+| **Customer.io** GTM AI Eng | **$140–170K** | **4+ yrs software/platform/infra engineering**, terminal daily, GitHub PR-and-deploy, **Kubernetes/GCP**, **database administration**, LLM app dev (prompt eng, tool calling, evals, agent frameworks) |
+| **UpGuard** GTM Engineer | **$161–207K** | **n8n expertise**, Python and/or JavaScript, **REST API architecture "as a user AND builder of APIs"**, **dbt + reverse-ETL**, LLM automation track record |
+| **Cresta** GTM Engineer | **$150–230K** | "Engineer who can bridge deep technical ability with real GTM understanding," writes custom code, APIs, data systems. Stack: Salesforce, Gong, **Clay**, Slack, Glean, Coda |
+| **ButterflyMX** GTM Engineer | $150–180K | Explicitly **"senior individual contributor"**; AI agents in production, prompt libraries, API integration, judgment to know when generated code is fragile |
+
+**Read those requirements again.** Kubernetes. Database administration. React. dbt.
+Building APIs, not just calling them. 8+ years full-stack. **These are software
+engineering jobs that happen to serve GTM teams.** The CrowdStrike posting's own
+apply link even points at a req titled *"Sr Full Stack Engineer."*
+
+**Mac cannot build toward Tier A in 90 days.** That's years of engineering, not a
+bootcamp. Saying otherwise would be lying to him.
+
+### Tier B — "RevOps/GTM ops" that means **operator who automates** ($90–130K)
+
+**EliseAI RevOps Associate** (§1.5): SQL, Clay, Outreach, Salesforce, deal desk,
+dashboards, "scrappy builder who automates manual work." **No Kubernetes. No React.
+No years-of-engineering bar.** And *"experience working with Sales"* is a listed
+requirement.
+
+### What this means
+
+**Tier B is the door. Tier A is the destination — and it's further away than the
+salary bands made it look.** The realistic sequence is unchanged but the timeline is
+longer: RevOps L2 → build real engineering skill on the job over years → Tier A.
+
+**⚠ The most reachable Tier A roles**, if Mac closes the coding gap:
+- **Cresta** — least prescriptive of the group. No years bar, no degree bar, no
+  infra requirements stated. Wants GTM understanding *plus* code. Also offers
+  **commission on measurable impact** — a sales-brain-friendly structure. 🔗 connection.
+- **UpGuard** — n8n-centric rather than infra-centric; the most *learnable* stack
+  on the list. ⚠ **but only hires in CA, MD, MA, IL, OR, WA, CO, TX, FL, PA, LA, MO,
+  DC** — check Mac's state. No relocation, no sponsorship.
+
+**⚠ Flosum (AI GTM Engineer)** — Easy Apply, and the network path is
+**Shaun Birch, VP Global Sales — a Datadog alum**. Warmest connection surfaced so
+far and directly relevant (sales leader, shared employer).
+
+### Bonus: Customer.io published their interview loop
+
+30-min recruiter → 45-min hiring manager → 45-min with a GTM AI team member →
+**60-min live technical session**. Useful calibration for what any Tier A loop
+demands.
+
+---
+
 ## 3. THE REQUIREMENT PATTERN — what recurs across all three full JDs
 
 Every one of ButterflyMX, Nooks, and EliseAI asks for the same six things:

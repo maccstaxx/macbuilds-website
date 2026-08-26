@@ -950,6 +950,21 @@ external with a portfolio instead.
 
 Append dated entries. Newest on top.
 
+- **2026-08-18 (9)** — Mac pasted **5 more full JDs** (CrowdStrike, UpGuard,
+  Customer.io, Cresta, Flosum). **Major reframe added to
+  [`GTM_ENGINEER_SPEC.md`](GTM_ENGINEER_SPEC.md) §2.5: "GTM Engineer" is two
+  different jobs sharing one title.** *Tier A* ($140–250K) = **software engineering**
+  — CrowdStrike wants 8+ yrs full-stack + React + AWS/CI-CD; Customer.io wants 4+ yrs
+  platform engineering + **Kubernetes + database administration**; UpGuard wants
+  **REST APIs as a builder + dbt + reverse-ETL**. *Tier B* ($90–130K) = the EliseAI
+  RevOps archetype, which needs SQL + Clay and lists sales experience as a
+  requirement. **Honest correction: Tier A is not 90 days away — it's years of
+  engineering.** Tier B remains the door. Most reachable Tier A roles flagged:
+  **Cresta** (least prescriptive; no years/degree/infra bar; pays commission on
+  impact) and **UpGuard** (n8n-centric, most learnable stack — ⚠ but hires only in
+  13 named states). **Warmest connection surfaced: Flosum via Shaun Birch, VP Global
+  Sales and a Datadog alum.** LinkedIn scored fit LOW on all four Tier A roles.
+
 - **2026-08-18 (8)** — Mac shared a 25-role LinkedIn GTM-Engineer search and asked for
   every posting's requirements. **LinkedIn + all ATS hosts are egress-blocked**, so
   individual JDs could not be fetched; built
