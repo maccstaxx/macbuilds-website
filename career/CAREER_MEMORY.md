@@ -12,6 +12,77 @@
 
 ---
 
+## 0.6. DIRECTION — the question under all the others
+
+*2026-08-18: Mac stepped back and asked what direction to take, rather than which
+job to chase. This section is the frame; everything below it is tactics.*
+
+### The observation worth naming
+
+In three days Mac has moved through **five targets**: founding GTM Engineer →
+RevOps broadly → Insight deal desk → Insight AE → EliseAI RevOps Associate. That's
+not a character flaw — it's what being between roles does to anyone. But the effect
+is that **his direction is currently being set by whichever posting he read most
+recently.** That's a bad instrument.
+
+### What Mac's own behavior says (the actual signal)
+
+Ignore the titles and look at what he does unprompted:
+- Peers ask him for his **cadences and follow-up emails** — twice, unprompted
+  (Porter). He has real craft in outbound.
+- He trades **prompt libraries** with peers (Craig).
+- He got pulled toward GTM engineering by seeing **Cody's builds**, not by a JD.
+- His personal repo is literally named **`macbuilds`**.
+
+Every one of those points the same way: **building systems that make selling work
+better.** That's more stable evidence than any title he's been circling — and
+notably, it's the *GTM-engineering* side of the RevOps/GTM-eng line (§5.7), not the
+system-of-record side.
+
+### The three honest directions
+
+**Direction 1 — Stay in sales, become the AI-native seller.**
+AE at a modern SaaS/AI company. Keeps earning power (AE OTE >> analyst salary),
+fastest path to income, uses credentials he already has. The automation/AI interest
+becomes his edge *in the seat* rather than a career change. **Lowest risk, real
+ceiling, and it does not waste the last 4 years.** Underrated — do not strawman it.
+
+**Direction 2 — Pivot to RevOps → GTM engineering.**
+The EliseAI archetype (§1.5). Short-term pay cut, new lane, ~8–12 weeks of prep for
+the first hop, then a multi-year climb to the L3 destination (§5.7). Higher ceiling
+if the field keeps growing; best aligned with what he seems to actually enjoy.
+
+**Direction 3 — Solutions/Sales Engineering.**
+The middle path: technical, keeps comp, counts toward the Nooks requirement.
+⚠ Harder on-ramp from an AE seat than earlier sessions implied (§5.7).
+
+### The honest answer: direction comes from evidence, not analysis
+
+No amount of JD-reading settles this. **The cheapest evidence available is doing the
+work** — and being between roles is the one time Mac can buy it cheap.
+
+**The two-week test:**
+- **Week 1 — build.** One thing: the follow-up/sequencing engine he already has
+  instincts for. *Notice whether it energizes him or feels like homework.*
+- **Week 2 — analyze.** A real funnel analysis in SQL on a sample dataset.
+  *Same question.* (This is also RevOps day-to-day, so it's a true preview.)
+- **Throughout — three conversations:** Cody (just made the jump), someone in a
+  RevOps seat, and a strong AE who went technical without leaving sales.
+
+**How to read the result:** if building energizes him → Direction 2. If it reads as
+a chore he'd rather delegate → Direction 1, and the interest becomes an edge rather
+than a career. Either outcome is a *win*, and either way he ends the two weeks with
+portfolio material he didn't have.
+
+### ⚠ The constraint that overrides all of this
+
+**Direction-setting has a deadline because income does.** Run the job search in
+parallel with the test — do not pause applications to go find himself. If runway is
+short, Direction 1 (or the Insight floor, §8c) wins by default, and the pivot
+becomes a thing he builds toward *from inside* a paying seat.
+
+---
+
 ## 0.5. CURRENT SITUATION — ACTIVE SEARCH (as of 2026-08-18)
 
 **Mac is between roles.** Last seat: **AE @ Datadog, 10 months.** Actively looking.
@@ -878,6 +949,20 @@ external with a portfolio instead.
 ## 9. PROGRESS LOG
 
 Append dated entries. Newest on top.
+
+- **2026-08-18 (7)** — Mac stepped back from job-hunting to ask about **direction**.
+  Added **§0.6** as the new top-level frame. Named the pattern: five targets in three
+  days means postings are setting his direction, not the other way round. Pulled the
+  real signal from his behavior (peers ask for his cadences; he trades prompt
+  libraries; he was pulled in by Cody's *builds*; his repo is named `macbuilds`) —
+  it points at **building systems that make selling work better**, i.e. the
+  GTM-engineering side of the line, not the system-of-record side. Laid out three
+  honest directions including **staying in sales as an AI-native seller** (Direction
+  1 — deliberately not strawmanned; keeps earning power and doesn't waste 4 years).
+  Core move: **direction comes from evidence, not analysis** → prescribed a
+  **two-week test** (week 1 build, week 2 SQL analysis, plus 3 conversations) with a
+  clear read-out rule. Reiterated that the search runs in parallel — no pausing to
+  self-discover. Asked Mac directly for **runway** and **gut-pull direction**.
 
 - **2026-08-18 (6)** — Mac found the **EliseAI RevOps Associate** posting and called
   it the role to build toward. **Agreed — promoted to near-term target (§1.5);
